@@ -1,10 +1,13 @@
 {
-    "redirects": [
-      {
-        "source": "/",
-        "destination": "/home.html",
-        "permanent": true
-      }
-    ]
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/home.html",
+      "permanent": true
+    }
+  ],
+  "features": {
+    "previewToolbar": false
   }
+}
   
