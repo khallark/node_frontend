@@ -369,6 +369,7 @@ async function searchString(event) {
     const products = await __fetch_searched_products(string);
     const search_sec = document.getElementById('search-content-table');
     deleteAllChildren(search_sec);
+    document.getElementById('search-num').textContent = `Items (${products.length})`;
     for (let i = 0; i < products.length; i++) {
         const productArray = Object.values(products[i]);
         let newRow = search_sec.insertRow();
@@ -394,6 +395,7 @@ async function updateSearch() {
     const products = await __fetch_searched_products(string);
     const search_sec = document.getElementById('search-content-table');
     deleteAllChildren(search_sec);
+    document.getElementById('search-num').textContent = `Items (${products.length})`;
     for (let i = 0; i < products.length; i++) {
         const productArray = Object.values(products[i]);
         let newRow = search_sec.insertRow();
