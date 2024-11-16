@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surindera Health Care</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favpng_cartoon-blue-capsule.png" type="image/x-icon">
+</head>
+<body>
+    <div id="main-wrapper" class="wrapper">
+        <div class="dashboard">
+            <h1 class="ops-text">Options</h1>
+
+            <div class="ops-button" id="home-bttn" onclick="disCont('home')">Home</div>
+
+            <div class="ops-button" id="search-bttn" onclick="disCont('search')">Search</div>
+
+            <div class="ops-button" id="create-bttn" onclick="disCont('create')">Create entry</div>
+
+            <div class="ops-button ops-button-active" id="expiring-bttn" onclick="disCont('expiring')">Expiring(<= 6M)</div>
+
+            <div class="ops-button" id="expired-bttn" onclick="disCont('expired')" style="border-bottom: 1px solid rgb(212, 212, 212);">Expired</div>
+        </div>
+
+        <div class="expiring-ct" id="expiring-content">
+            <div class="expire-slot" style="
+                height: 80px;
+                min-height: 80px;
+                justify-content: space-between;
+                align-items: center;
+                border: none;
+            ">
+                <h1 style="font-size: 3rem; font-weight: 200;" id="expiring-num">Expiring Items (0)</h1>
+                <button class="reset" id="expiring-reset" onclick="reset('expiring')">
+                    <img id="reset-bttn" src="reset.png" alt="reset">
+                </button>
+            </div>
+            <div class="table-div">
+                <table>
+                    <thead>
+                        <tr class="tr">
+                            <th id="u-d">U/D</th>
+                            <th>Category</th>
+                            <th>Product Name</th>
+                            <th>Batch Number</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Party</th>
+                            <th>Bill Number</th>
+                            <th>Expiry Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expiring-content-table">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="no-show" class="update-wrapper">
+        <div class="update-card">
+            <form autocomplete="on" onsubmit="preventRefresh(event)">
+                <div class="name">
+                    <h6 style="overflow: visible; padding-left: 5px; font-weight: 400;">Choose Category *</h6>
+                    <select name="options" id="update-cat" class="name-input">
+                        <option value="none">None</option>
+                        <option value="Tablet">Tablet</option>
+                        <option value="Capsule">Capsule</option>
+                        <option value="Injection">Injection</option>
+                        <option value="Tube">Tube</option>
+                        <option value="Gel">Gel</option>
+                        <option value="Powder">Powder</option>
+                        <option value="Syrup">Syrup</option>
+                        <option value="Cream">Cream</option>
+                        <option value="Drops">Drops</option>
+                        <option value="Ointment">Ointment</option>
+                        <option value="Lotion">Lotion</option>
+                        <option value="Nano">Nano</option>
+                        <option value="Shot">Shot</option>
+                        <option value="NanoShot">Nano Shot</option>
+                        <option value="Respules">Respules</option>
+                        <option value="Spray">Spray</option>
+                        <option value="Inhaler">Inhaler</option>
+                        <option value="Gargle">Gargle</option>
+                        <option value="Gum Paint">Gum Paint</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div class="name">
+                    <h6 style="overflow: visible; padding-left: 5px; font-weight: 400;">Enter Product Name *</h6>
+                    <input id="inp-8" class="name-input" type="text" placeholder="Enter here....">
+                </div>
+                <div class="name">
+                    <h6 style="overflow: visible; padding-left: 5px; font-weight: 400;">Enter Batch Number *</h6>
+                    <input id="inp-9" class="name-input" type="text" placeholder="Enter here....">
+                </div>
+                <div class="name">
+                    <h6 style="overflow: visible; padding-left: 5px; font-weight: 400;">Enter Quantity</h6>
+                    <input id="inp-10" class="name-input" type="text" placeholder="Enter here....">
+                </div>
+                <div class="name">
+                    <h6 style="overflow: visible; padding-left: 5px; font-weight: 400;">Enter Price</h6>
+                    <input id="inp-11" class="name-input" type="text" placeholder="Enter here....">
+                </div>
+                <div class="name">
+                    <h6 style="overflow: visible; padding-left: 5px; font-weight: 400;">Enter Party Name</h6>
+                    <input id="inp-12" class="name-input" type="text" placeholder="Enter here....">
+                </div>
+                <div class="name">
+                    <h6 style="overflow: visible; padding-left: 5px; font-weight: 400;">Enter Bill Number *</h6>
+                    <input id="inp-13" class="name-input" type="text" placeholder="Enter here....">
+                </div>
+                <div class="name">
+                    <h6 style="overflow: visible; padding-left: 5px; font-weight: 400;">Enter Expiry date *</h6>
+                    <input id="inp-14" class="name-input" type="date">
+                </div>
+                <div class="name">
+                    <h6 style="overflow: visible; padding-left: 5px; font-weight: 400;">Sold or not *</h6>
+                    <select name="options" id="update-sold" class="name-input">
+                        <option value="FALSE">No</option>
+                        <option value="TRUE">Yes</option>
+                    </select>
+                </div>
+                <div style="display: flex; flex-direction: row; gap: 20px; width: 450px; justify-content: center;">
+                    <button id="update-submit" class="submit" onclick="updateRow('expiring')">Update</button>
+                    <button id="update-submit" class="submit" onclick="removeUpdateTemplate()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="config.js"></script>
+<script>
+    function disCont(section) {
+        const currentPath = window.location.pathname;
+        if (currentPath === `/${section}`) {
+            return;
+        }
+        window.location.href = `/${section}`;
+    }
+
+    function showUpdateTemplate() {
+        let update = document.getElementById("no-show");
+        let main = document.getElementById("main-wrapper");
+        main.classList.add("wrapper-blur");
+        update.id = "show";
+    }
+
+    function removeUpdateTemplate() {
+        let update = document.getElementById("show");
+        let main = document.getElementById("main-wrapper");
+        main.classList.remove("wrapper-blur");
+        update.id = "no-show";
+    }
+    function preventRefresh(event) {
+        event.preventDefault();
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        await addExpiring();
+    });
+</script>
+</html>
