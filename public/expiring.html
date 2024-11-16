@@ -15,18 +15,18 @@
         <div class="dashboard">
             <h1 class="ops-text">Options</h1>
 
-            <div class="ops-button" id="home-bttn" onclick="disCont('1home')">Home</div>
+            <div class="ops-button" id="home-bttn" onclick="disCont('home')">Home</div>
 
-            <div class="ops-button" id="search-bttn" onclick="disCont('2search')">Search</div>
+            <div class="ops-button" id="search-bttn" onclick="disCont('search')">Search</div>
 
-            <div class="ops-button" id="create-bttn" onclick="disCont('3create')">Create entry</div>
+            <div class="ops-button" id="create-bttn" onclick="disCont('create')">Create entry</div>
 
-            <div class="ops-button" id="expiring-bttn" onclick="disCont('4expire_6')">Expiring(<= 6M)</div>
+            <div class="ops-button ops-button-active" id="expiring-bttn" onclick="disCont('expiring')">Expiring(<= 6M)</div>
 
-            <div class="ops-button ops-button-active" id="expired-bttn" onclick="disCont('5expired')" style="border-bottom: 1px solid rgb(212, 212, 212);">Expired</div>
+            <div class="ops-button" id="expired-bttn" onclick="disCont('expired')" style="border-bottom: 1px solid rgb(212, 212, 212);">Expired</div>
         </div>
 
-        <div class="expired-ct" id="expired-content">
+        <div class="expiring-ct" id="expiring-content">
             <div class="expire-slot" style="
                 height: 80px;
                 min-height: 80px;
@@ -34,8 +34,8 @@
                 align-items: center;
                 border: none;
             ">
-                <h1 style="font-size: 3rem; font-weight: 200;" id="expired-num">Expired Items (0)</h1>
-                <button class="reset" id="expired-reset" onclick="reset('expired')">
+                <h1 style="font-size: 3rem; font-weight: 200;" id="expiring-num">Expiring Items (0)</h1>
+                <button class="reset" id="expiring-reset" onclick="reset('expiring')">
                     <img id="reset-bttn" src="reset.png" alt="reset">
                 </button>
             </div>
@@ -54,7 +54,7 @@
                             <th>Expiry Date</th>
                         </tr>
                     </thead>
-                    <tbody id="expired-content-table">
+                    <tbody id="expiring-content-table">
 
                     </tbody>
                 </table>
@@ -126,7 +126,7 @@
                     </select>
                 </div>
                 <div style="display: flex; flex-direction: row; gap: 20px; width: 450px; justify-content: center;">
-                    <button id="update-submit" class="submit" onclick="updateRow('expired')">Update</button>
+                    <button id="update-submit" class="submit" onclick="updateRow('expiring')">Update</button>
                     <button id="update-submit" class="submit" onclick="removeUpdateTemplate()">Cancel</button>
                 </div>
             </form>
@@ -159,8 +159,9 @@
     function preventRefresh(event) {
         event.preventDefault();
     }
+
     document.addEventListener('DOMContentLoaded', async () => {
-        await addExpired();
+        await addExpiring();
     });
 </script>
 </html>

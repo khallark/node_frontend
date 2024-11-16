@@ -15,31 +15,32 @@
         <div class="dashboard">
             <h1 class="ops-text">Options</h1>
 
-            <div class="ops-button" id="home-bttn" onclick="disCont('1home')">Home</div>
+            <div class="ops-button" id="home-bttn" onclick="disCont('home')">Home</div>
 
-            <div class="ops-button ops-button-active" id="search-bttn" onclick="disCont('2search')">Search</div>
+            <div class="ops-button" id="search-bttn" onclick="disCont('search')">Search</div>
 
-            <div class="ops-button" id="create-bttn" onclick="disCont('3create')">Create entry</div>
+            <div class="ops-button" id="create-bttn" onclick="disCont('create')">Create entry</div>
 
-            <div class="ops-button" id="expiring-bttn" onclick="disCont('4expire_6')">Expiring(<= 6M)</div>
+            <div class="ops-button" id="expiring-bttn" onclick="disCont('expireing')">Expiring(<= 6M)</div>
 
-            <div class="ops-button" id="expired-bttn" onclick="disCont('5expired')" style="border-bottom: 1px solid rgb(212, 212, 212);">Expired</div>
+            <div class="ops-button ops-button-active" id="expired-bttn" onclick="disCont('expired')" style="border-bottom: 1px solid rgb(212, 212, 212);">Expired</div>
         </div>
 
-        <div class="search-ct" id="search-content">
-            <div style="
-                display: flex;
-                position: relative;
-                height: 100px;
-                min-height: 100px;
-                width: 90%;
-                margin-bottom: 30px;
+        <div class="expired-ct" id="expired-content">
+            <div class="expire-slot" style="
+                height: 80px;
+                min-height: 80px;
+                justify-content: space-between;
+                align-items: center;
                 border: none;
             ">
-                <input type="text" id="search-input" class="search-input" placeholder="Search for the product name...">
+                <h1 style="font-size: 3rem; font-weight: 200;" id="expired-num">Expired Items (0)</h1>
+                <button class="reset" id="expired-reset" onclick="reset('expired')">
+                    <img id="reset-bttn" src="reset.png" alt="reset">
+                </button>
             </div>
             <div class="table-div">
-                <table style="font-size: 1rem;">
+                <table>
                     <thead>
                         <tr class="tr">
                             <th id="u-d">U/D</th>
@@ -53,14 +54,13 @@
                             <th>Expiry Date</th>
                         </tr>
                     </thead>
-                    <tbody id="search-content-table">
+                    <tbody id="expired-content-table">
 
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
     <div id="no-show" class="update-wrapper">
         <div class="update-card">
             <form autocomplete="on" onsubmit="preventRefresh(event)">
@@ -126,7 +126,7 @@
                     </select>
                 </div>
                 <div style="display: flex; flex-direction: row; gap: 20px; width: 450px; justify-content: center;">
-                    <button id="update-submit" class="submit" onclick="updateRow('search')">Update</button>
+                    <button id="update-submit" class="submit" onclick="updateRow('expired')">Update</button>
                     <button id="update-submit" class="submit" onclick="removeUpdateTemplate()">Cancel</button>
                 </div>
             </form>
@@ -156,12 +156,11 @@
         main.classList.remove("wrapper-blur");
         update.id = "no-show";
     }
-
     function preventRefresh(event) {
         event.preventDefault();
     }
-
-    document.getElementById('search-input').addEventListener('input', searchString)
+    document.addEventListener('DOMContentLoaded', async () => {
+        await addExpired();
+    });
 </script>
-
 </html>

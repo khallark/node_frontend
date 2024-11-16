@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = (req, res) => {
-  const filePath = path.join(__dirname, '../public/3create.html');
+  const filePath = path.join(__dirname, '../public/create.html');
   
   fs.readFile(filePath, 'utf-8', (err, data) => {
     if (err) {
