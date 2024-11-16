@@ -208,9 +208,7 @@ async function __fetch_searched_products(string) {
         return await response.json();
 
     } catch (error) {
-        if (error.name === 'AbortError') {
-            console.log('Request was aborted');
-        } else {
+        if (error.name !== 'AbortError') {
             console.error('Error fetching products:', error);
         }
         return new Array(); // Return null in case of error
