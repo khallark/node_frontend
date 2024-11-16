@@ -5,9 +5,6 @@
       "destination": "/home.html",
       "permanent": true
     }
-  ],
-  "features": {
-    "previewToolbar": false
-  }
+  ]
 }
   
