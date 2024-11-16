@@ -384,7 +384,7 @@ input[type="radio"] {
     background-color: rgb(197, 0, 0);
 }
 .reset:active {
-    filter: rgb(131, 0, 0);
+    background-color: rgb(131, 0, 0);
 }
 
 
