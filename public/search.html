@@ -140,14 +140,6 @@
 </body>
 <script src="config.js"></script>
 <script>
-    function disCont(section) {
-        const currentPath = window.location.pathname + '.html';
-        if (currentPath === `/${section}`) {
-            return;
-        }
-        window.location.href = `/${section}.html`;
-    }
-
     function showUpdateTemplate() {
         let update = document.getElementById("no-show");
         let main = document.getElementById("main-wrapper");

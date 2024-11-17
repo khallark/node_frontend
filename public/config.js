@@ -51,6 +51,13 @@ let cat_map_str = {
 }
 
 
+function disCont(section) {
+    const currentPath = window.location.pathname + '.html';
+    if (currentPath === `/${section}`) {
+        return;
+    }
+    window.location.href = `/${section}.html`;
+}
 
 function dash_toggle(bool) {
     let dashboard = document.getElementById('dboard')
