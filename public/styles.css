@@ -83,9 +83,11 @@ td {
     display: flex;
     flex-direction: column;
     row-gap: 12px;
+    padding-top: 30px;
     align-items: center;
     width: 100%;
     overflow-y: auto;
+    /* background-color: aqua; */
 }
 
 .bin {
@@ -276,7 +278,7 @@ input[type="radio"] {
     height: 100vh;
     align-items: center;
     width: calc(100% - 170px);
-    min-width: 620px;
+    min-width: 200px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
     background: none;
 }
@@ -288,6 +290,7 @@ input[type="radio"] {
     font-size: 1.6rem;
     font-weight: 900;
     overflow: visible;
+    /* background-color: #6d6d6d; */
 }
 #create-submit {
     font-size: 1.5rem;
@@ -464,6 +467,12 @@ input[type="radio"] {
         height: 30px;
         min-height: 20px;
         width: 95%;
+    }
+    .name {
+        width: 80%;
+    }
+    .name-input {
+        width: 100%;
     }
 }
 
