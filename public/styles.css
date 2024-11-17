@@ -70,6 +70,8 @@ td {
     font-weight: 900;
     color: white;
     border: none;
+    cursor: pointer;
+    user-select: none;
 }
 .u-d-button:hover{
     filter: brightness(0.85);
@@ -379,11 +381,15 @@ input[type="radio"] {
     background-color: red;
     border-radius: 50%;
     z-index: 1;
+    cursor: pointer;
+    user-select: none;
 }
 #reset-bttn {
     height: 25px;
     width: 25px;
     z-index: -1;
+    cursor: pointer;
+    user-select: none;
 }
 .reset:hover {
     background-color: rgb(197, 0, 0);
@@ -418,13 +424,14 @@ input[type="radio"] {
     justify-content: center;
     height: 1030px;
     width: 550px;
-    /* min-width: 550px; */
     border-radius: 20px;
     background-color: white;
 }
 
 .dash-toggle {
     display: none;
+    cursor: pointer;
+    user-select: none;
 }
 
 #s-b {
@@ -491,7 +498,6 @@ input[type="radio"] {
     }
     .update-card {
         width: 100%;
-        /* min-width: none; */
     }
     #update-form {
         display: flex;
