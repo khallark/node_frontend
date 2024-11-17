@@ -441,6 +441,8 @@ input[type="radio"] {
         padding: 1px;
         font-size:0.6rem;
         word-break: normal;
+        padding-top: 6px;
+        padding-bottom: 6px;
     }
     
     html {
