@@ -505,6 +505,9 @@ input[type="radio"] {
     .reset:hover {
         background-color: red;
     }
+    .reset:active {
+        background-color: rgb(131, 0, 0);
+    }
 }
 
 @media (max-width: 600px) {
