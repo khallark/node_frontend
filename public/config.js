@@ -52,8 +52,8 @@ let cat_map_str = {
 
 
 function disCont(section) {
-    const currentPath = window.location.pathname + '.html';
-    if (currentPath === `/${section}`) {
+    const currentPath = window.location.pathname;
+    if (currentPath === `/${section}.html`) {
         return;
     }
     window.location.href = `/${section}.html`;
