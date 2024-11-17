@@ -209,7 +209,7 @@ input[type="radio"] {
     height: auto;
     height: 100vh;
     width: calc(100% - 170px);
-    min-width: 500px;
+    min-width: 200px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
     background: none;
 } */
@@ -233,7 +233,7 @@ input[type="radio"] {
     row-gap: 20px;
     overflow: hidden;
     width: calc(100% - 170px);
-    min-width: 500px;
+    min-width: 200px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
     background: none;
 }
@@ -245,7 +245,7 @@ input[type="radio"] {
     row-gap: 20px;
     height: 100vh;
     width: calc(100% - 170px);
-    min-width: 500px;
+    min-width: 200px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
     background: none;
 }
@@ -335,7 +335,7 @@ input[type="radio"] {
     height: 100vh;
     row-gap: 20px;
     width: calc(100% - 170px);
-    min-width: 500px;
+    min-width: 200px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
     background: none;
 }
@@ -349,7 +349,7 @@ input[type="radio"] {
     height: 100vh;
     row-gap: 20px;
     width: calc(100% - 170px);
-    min-width: 500px;
+    min-width: 200px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
     background: none;
 }
@@ -429,6 +429,10 @@ input[type="radio"] {
     }
 }
 @media (max-width: 900px) {
+    th {
+        padding: 1px;
+    }
+    
     html {
         font-size: 10px;
     }
@@ -464,7 +468,19 @@ input[type="radio"] {
 }
 
 @media (max-width: 600px) {
-    html {
-        font-size: 9px
+    html .table-div {
+        font-size: 4px
     }
+    #u-d {
+        width: 30px;
+    }
+    .u-d-button {
+        height: 15px;
+        width: 100%;
+        font-size: 0.7rem;
+    }
+    /* .table-div {
+        transform: translateY(-120px);
+        scale: 0.8;
+    } */
 }
