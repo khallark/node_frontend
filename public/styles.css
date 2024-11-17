@@ -439,6 +439,8 @@ input[type="radio"] {
 @media (max-width: 900px) {
     th {
         padding: 1px;
+        font-size:0.6rem;
+        word-break: normal;
     }
     
     html {
