@@ -508,6 +508,9 @@ input[type="radio"] {
     html .table-div {
         font-size: 4px
     }
+    td {
+        font-size: 0.8rem;
+    }
     #u-d {
         width: 30px;
     }
