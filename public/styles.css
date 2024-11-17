@@ -515,12 +515,8 @@ input[type="radio"] {
         width: 30px;
     }
     .u-d-button {
-        height: 22px;
+        height: 27px;
         width: 100%;
         font-size: 0.7rem;
     }
-    /* .table-div {
-        transform: translateY(-120px);
-        scale: 0.8;
-    } */
 }
