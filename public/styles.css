@@ -162,6 +162,7 @@ td {
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     box-shadow: 0 0 20px 5px rgb(107, 107, 107);
+    transform: translateX(0px);
 }
 .ops-text {
     margin: 10px;
@@ -182,7 +183,7 @@ input[type="radio"] {
     min-height: 50px;
     border-bottom: 1px solid rgb(212, 212, 212);
     border-bottom-right-radius: 20px;
-    font-size: 1.3em;
+    font-size: 1.3rem;
     font-weight: 200;
     text-shadow: 1px 1px 1px rgb(92, 92, 92);
     color: rgb(119, 119, 119);
@@ -203,15 +204,15 @@ input[type="radio"] {
     color: rgb(0, 0, 0);
     z-index: -1;
 }
-.tab-content {
+/* .tab-content {
     display: none;
-    /* height: auto; */
+    height: auto;
     height: 100vh;
     width: calc(100% - 170px);
     min-width: 500px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
     background: none;
-}
+} */
 @keyframes pop-up {
     from {
         opacity: 0;
@@ -275,7 +276,7 @@ input[type="radio"] {
     height: 100vh;
     align-items: center;
     width: calc(100% - 170px);
-    min-width: 500px;
+    min-width: 620px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
     background: none;
 }
@@ -416,4 +417,54 @@ input[type="radio"] {
     min-width: 550px;
     border-radius: 20px;
     background-color: white;
+}
+
+.dash-toggle {
+    display: none;
+}
+
+@media (min-width: 900px) {
+    #dboard {
+        transform: translateX();
+    }
+}
+@media (max-width: 900px) {
+    html {
+        font-size: 10px;
+    }
+    .home-ct, .search-ct, .create-ct, .expiring-ct, .expired-ct {
+        width: 100%;
+        position: absolute;
+    }
+    .dashboard {
+        z-index: 100;
+        background-color: #6d6d6d;
+        transform: translateX(-170px);
+        transition: 0.2s ease-out;
+    }
+    .ops-text {
+        display: none;
+    }
+    #u-d {
+        width: 30px;
+    }
+    .u-d-button {
+        height: 30px;
+        width: 30px;
+    }
+    .dash-toggle {
+        display: block;
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        height: 30px;
+        min-height: 20px;
+        width: 95%;
+    }
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 9px
+    }
 }

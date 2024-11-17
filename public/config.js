@@ -50,6 +50,38 @@ let cat_map_str = {
     22: "Resp Solution"
 }
 
+
+
+function dash_toggle(bool) {
+    let dashboard = document.getElementById('dboard')
+    if(bool) {
+        dashboard.style.transform = 'translateX(0px)';
+    } else {
+        dashboard.style.transform = 'translateX(-170px)';
+    }
+}
+
+const mediaQuery = window.matchMedia("(min-width: 900px)");
+function handleMediaChange(event) {
+    if (event.matches) {
+        dash_toggle(true);
+    } else {
+        dash_toggle(false);
+    }
+}
+mediaQuery.addEventListener("change", handleMediaChange);
+
+
+
+
+
+
+
+
+
+
+
+
 // Function to fetch all products and return the JSON data
 async function __fetchAllProducts() {
     try {

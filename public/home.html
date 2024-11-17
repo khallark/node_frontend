@@ -12,8 +12,9 @@
 </head>
 <body>
     <div id="main-wrapper" class="wrapper">
-        <div class="dashboard">
+        <div class="dashboard" id="dboard">
             <h1 class="ops-text">Options</h1>
+            <div class="dash-toggle" style="position: relative; height: 60px;"><img src="menu.png" alt="Menu" style="height: 30px;" onclick="dash_toggle(false)"></div>
 
             <div class="ops-button ops-button-active" id="home-bttn" onclick="disCont('home')">Home</div>
 
@@ -29,7 +30,9 @@
 
 
         <div class="home-ct" id="home-content">
+            <div class="dash-toggle"><img src="menu.png" alt="Menu" style="height: 30px;" onclick="dash_toggle(true)"></div>
             <div class="home-slot" style="
+                /* position: absolute; */
                 height: 80px;
                 min-height: 80px;
                 justify-content: space-between;
@@ -161,9 +164,11 @@
         main.classList.remove("wrapper-blur");
         update.id = "no-show";
     }
+
     function preventRefresh(event) {
         event.preventDefault();
     }
+
     document.addEventListener('DOMContentLoaded', async () => {
         await addAll();
     });
