@@ -325,6 +325,8 @@ input[type="radio"] {
     background-color: rgb(255, 88, 88);
     color: white;
     transition: 0.1s;
+    cursor: pointer;
+    user-select: none;
 }
 .submit:hover {
     background-color: rgb(252, 53, 53);
