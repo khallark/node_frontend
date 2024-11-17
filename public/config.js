@@ -336,7 +336,6 @@ async function addAll() {
         for(let i = 1; i < 8; i++) {
             let cell = newRow.insertCell(i);
             if(i == 4 || i == 5 || i == 6) cell.innerHTML = `${productArray[i - 1]}`;
-            else if(i == 1) cell.innerHTML = `${cat_map_str[productArray[i - 1]]}`;
             else cell.innerHTML = `${productArray[i - 1]}`;
         }
         const date = new Date(productArray[7]);
@@ -361,7 +360,6 @@ async function addExpiring() {
         for(let i = 1; i < 8; i++) {
             let cell = newRow.insertCell(i);
             if(i == 4 || i == 5 || i == 6) cell.innerHTML = `${productArray[i - 1]}`;
-            else if(i == 1) cell.innerHTML = `${cat_map_str[productArray[i - 1]]}`;
             else cell.innerHTML = `${productArray[i - 1]}`;
         }
         const date = new Date(productArray[7]);
@@ -387,7 +385,6 @@ async function addExpired() {
         for(let i = 1; i < 8; i++) {
             let cell = newRow.insertCell(i);
             if(i == 4 || i == 5 || i == 6) cell.innerHTML = `${productArray[i - 1]}`;
-            else if(i == 1) cell.innerHTML = `${cat_map_str[productArray[i - 1]]}`;
             else cell.innerHTML = `${productArray[i - 1]}`;
         }
         const date = new Date(productArray[7]);
@@ -413,7 +410,6 @@ async function searchString(event) {
         for(let i = 1; i < 8; i++) {
             let cell = newRow.insertCell(i);
             if(i == 4 || i == 5 || i == 6) cell.innerHTML = `${productArray[i - 1]}`;
-            else if(i == 1) cell.innerHTML = `${cat_map_str[productArray[i - 1]]}`;
             else cell.innerHTML = `${productArray[i - 1]}`;
         }
         const date = new Date(productArray[7]);
@@ -439,7 +435,6 @@ async function updateSearch() {
         for(let i = 1; i < 8; i++) {
             let cell = newRow.insertCell(i);
             if(i == 4 || i == 5 || i == 6) cell.innerHTML = `${productArray[i - 1]}`;
-            else if(i == 1) cell.innerHTML = `${cat_map_str[productArray[i - 1]]}`;
             else cell.innerHTML = `${productArray[i - 1]}`;
         }
         const date = new Date(productArray[7]);
@@ -452,7 +447,7 @@ async function updateSearch() {
 
 async function delete_row(button, section) {
     const row = button.parentNode.children;
-    await __deleteTuple(cat_map_num[row[1].textContent], row[2].textContent, row[3].textContent, row[4].textContent, row[5].textContent, row[6].textContent, row[7].textContent, convertDateFormat(row[8].textContent));
+    await __deleteTuple(row[1].textContent, row[2].textContent, row[3].textContent, row[4].textContent, row[5].textContent, row[6].textContent, row[7].textContent, convertDateFormat(row[8].textContent));
     if(section === 'home') await addAll();
     if(section === 'search') await updateSearch();
     if(section === 'expiring') await addExpiring();
@@ -475,7 +470,7 @@ function isValidDateFormat(dateString) {
 
 async function addRow() {
     const vals = [
-        cat_map_num[document.getElementById('create-cat').value],
+        document.getElementById('create-cat').value,
         normalizeSpaces(document.getElementById('inp-1').value),
         normalizeSpaces(document.getElementById('inp-2').value),
         normalizeSpaces(document.getElementById('inp-3').value),
@@ -557,7 +552,7 @@ async function emptyUpdateInputs() {
 
 async function updateRow(section) {
     const vals = [
-        cat_map_num[document.getElementById('update-cat').value],
+        document.getElementById('update-cat').value,
         normalizeSpaces(document.getElementById('inp-8').value),
         normalizeSpaces(document.getElementById('inp-9').value),
         normalizeSpaces(document.getElementById('inp-10').value),
@@ -581,7 +576,7 @@ async function updateRow(section) {
     }
 
 
-    await __deleteTuple(cat_map_num[InitVals[0]], InitVals[1], InitVals[2], InitVals[3], InitVals[4], InitVals[5], InitVals[6], convertDateFormat(InitVals[7]));
+    await __deleteTuple(InitVals[0], InitVals[1], InitVals[2], InitVals[3], InitVals[4], InitVals[5], InitVals[6], convertDateFormat(InitVals[7]));
     try {
         await __addTuple(vals);
     } catch (error) {
