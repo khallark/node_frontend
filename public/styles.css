@@ -520,9 +520,6 @@ img {
 }
 
 @media (max-width: 600px) {
-    .wrapper {
-        overflow-y: auto;
-    }
     html .table-div {
         font-size: 4px
     }
