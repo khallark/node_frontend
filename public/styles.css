@@ -193,6 +193,7 @@ input[type="radio"] {
     cursor: pointer;
     z-index: 1;
     color: rgb(212, 212, 212);
+    cursor: pointer;
 }
 .ops-button:hover {
     box-shadow: 0 2px 2px 0 rgb(212, 212, 212);
