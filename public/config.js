@@ -430,7 +430,7 @@ async function addRow() {
         document.getElementById('create-sold').value
     ];
     
-    if(vals[0] == 0) {
+    if(vals[0] === 'none') {
         console.log('None is not a valid category.');
         return;
     }
@@ -511,7 +511,7 @@ async function updateRow(section) {
         normalizeSpaces(document.getElementById('inp-14').value),
         document.getElementById('update-sold').value
     ];
-    if(vals[0] == 0) {
+    if(vals[0] === 'none') {
         console.log('None is not a valid category.');
         return;
     }
