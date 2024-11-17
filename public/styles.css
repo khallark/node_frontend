@@ -432,8 +432,9 @@ input[type="radio"] {
 
 .dash-toggle {
     display: none;
+}
+img {
     cursor: pointer;
-    user-select: none;
 }
 
 #s-b {
