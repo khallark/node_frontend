@@ -172,6 +172,7 @@ td {
     font-size: 3rem;
     font-weight: 100;
     overflow: visible;
+    cursor: pointer;
 }
 input[type="radio"] {
     display: none;
