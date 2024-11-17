@@ -172,7 +172,6 @@ td {
     font-size: 3rem;
     font-weight: 100;
     overflow: visible;
-    cursor: pointer;
 }
 input[type="radio"] {
     display: none;
@@ -191,7 +190,6 @@ input[type="radio"] {
     text-shadow: 1px 1px 1px rgb(92, 92, 92);
     color: rgb(119, 119, 119);
     transition: 0.1s linear;
-    cursor: pointer;
     z-index: 1;
     color: rgb(212, 212, 212);
     cursor: pointer;
