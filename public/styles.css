@@ -430,7 +430,7 @@ input[type="radio"] {
 }
 @media (max-width: 900px) {
     html {
-        font-size: 8px;
+        font-size: 10px;
     }
     .home-ct, .search-ct, .create-ct, .expiring-ct, .expired-ct {
         width: 100%;
@@ -465,6 +465,6 @@ input[type="radio"] {
 
 @media (max-width: 600px) {
     html {
-        font-size: 4px
+        font-size: 9px
     }
 }
