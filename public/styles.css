@@ -417,7 +417,7 @@ input[type="radio"] {
     justify-content: center;
     height: 1030px;
     width: 550px;
-    min-width: 550px;
+    /* min-width: 550px; */
     border-radius: 20px;
     background-color: white;
 }
@@ -483,6 +483,19 @@ input[type="radio"] {
         width: 10px;
         height: 200px;
         min-height: 200px;
+    }
+    .update-card {
+        width: 100%;
+        /* min-width: none; */
+    }
+    #update-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .name-update {
+        width: 80%;
     }
 }
 
