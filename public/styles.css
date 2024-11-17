@@ -502,6 +502,9 @@ input[type="radio"] {
     .name-update {
         width: 80%;
     }
+    .reset:hover {
+        background-color: red;
+    }
 }
 
 @media (max-width: 600px) {
@@ -519,7 +522,5 @@ input[type="radio"] {
         width: 100%;
         font-size: 0.7rem;
     }
-    .reset:hover {
-        background-color: red;
-    }
+    
 }
