@@ -442,6 +442,7 @@ async function delete_row(button, section) {
 async function reset(string) {
     if(string === 'all') await addAll();
     else if(string === 'expiring') await addExpiring();
+    else if(string === 'expiring3') await addExpiring3();
     else if(sting === 'expired') await addExpired();
 }
 
