@@ -434,6 +434,7 @@ async function delete_row(button, section) {
     if(section === 'home') await addAll();
     if(section === 'search') await updateSearch();
     if(section === 'expiring') await addExpiring();
+    if(section === 'expiring3') await addExpiring3();
     if(section === 'expired') await addExpired();
 }
 
@@ -574,5 +575,6 @@ async function updateRow(section) {
     if(section === 'home') await addAll();
     if(section === 'search') await updateSearch();
     if(section === 'expiring') await addExpiring();
+    if(section === 'expiring3') await addExpiring3();
     if(section === 'expired') await addExpired();
 }
