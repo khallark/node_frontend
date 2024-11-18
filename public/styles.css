@@ -502,6 +502,7 @@ img {
     }
     .update-card {
         width: 100%;
+        border-radius: 0;
     }
     #update-form {
         display: flex;
