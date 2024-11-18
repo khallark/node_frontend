@@ -338,7 +338,7 @@ async function addExpiring3() {
     const products = await __fetchExpiringProducts3();
     const expiring_sec = document.getElementById('expiring-content-table');
     deleteAllChildren(expiring_sec);
-    document.getElementById('expiring-num').textContent = `Expiring Items (${products.length3})`;
+    document.getElementById('expiring-num').textContent = `Expiring Items (${products.length})`;
     for (let i = 0; i < products.length; i++) {
         const productArray = Object.values(products[i]);
         let newRow = expiring_sec.insertRow();
