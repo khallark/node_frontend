@@ -71,6 +71,23 @@ async function __fetchExpiringProducts() {
     }
 }
 
+async function __fetchExpiringProducts3() {
+    try {
+        const response = await fetch('https://prods-exp-server.onrender.com/expiring3');
+        
+        if (!response.ok) {
+            throw new Error(`Failed to fetch expiring products: ${response.statusText}`);
+        }
+        
+        // Return the parsed JSON data
+        return await response.json();
+        
+    } catch (error) {
+        console.error('Error fetching expiring products:', error);
+        return null;  // Return null in case of error
+    }
+}
+
 // Function to fetch expired products and return the JSON data
 async function __fetchExpiredProducts() {
     try {
@@ -284,8 +301,7 @@ async function addAll() {
         await addbts(cell, 'home')
         for(let i = 1; i < 8; i++) {
             let cell = newRow.insertCell(i);
-            if(i == 4 || i == 5 || i == 6) cell.innerHTML = `${productArray[i - 1]}`;
-            else cell.innerHTML = `${productArray[i - 1]}`;
+            cell.innerHTML = `${productArray[i - 1]}`;
         }
         const date = new Date(productArray[7]);
         const options = { day: 'numeric', month: 'long', year: 'numeric' };
@@ -308,8 +324,7 @@ async function addExpiring() {
         await addbts(cell, 'expiring')
         for(let i = 1; i < 8; i++) {
             let cell = newRow.insertCell(i);
-            if(i == 4 || i == 5 || i == 6) cell.innerHTML = `${productArray[i - 1]}`;
-            else cell.innerHTML = `${productArray[i - 1]}`;
+            cell.innerHTML = `${productArray[i - 1]}`;
         }
         const date = new Date(productArray[7]);
         const options = { day: 'numeric', month: 'long', year: 'numeric' };
@@ -319,6 +334,28 @@ async function addExpiring() {
     }
 }
 
+async function addExpiring3() {
+    const products = await __fetchExpiringProducts3();
+    const expiring_sec = document.getElementById('expiring-content-table');
+    deleteAllChildren(expiring_sec);
+    document.getElementById('expiring-num').textContent = `Expiring Items (${products.length3})`;
+    for (let i = 0; i < products.length; i++) {
+        const productArray = Object.values(products[i]);
+        let newRow = expiring_sec.insertRow();
+        if(productArray[8] === true) newRow.style.backgroundColor = 'white';
+        let cell = newRow.insertCell(0);
+        await addbts(cell, 'expiring')
+        for(let i = 1; i < 8; i++) {
+            let cell = newRow.insertCell(i);
+            cell.innerHTML = `${productArray[i - 1]}`;
+        }
+        const date = new Date(productArray[7]);
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        productArray[7] = date.toLocaleDateString('en-US', options);
+        cell = newRow.insertCell(8);
+        cell.innerHTML = `${productArray[7]}`;
+    }
+}
 
 async function addExpired() {
     const products = await __fetchExpiredProducts();
@@ -333,8 +370,7 @@ async function addExpired() {
         await addbts(cell, 'expired')
         for(let i = 1; i < 8; i++) {
             let cell = newRow.insertCell(i);
-            if(i == 4 || i == 5 || i == 6) cell.innerHTML = `${productArray[i - 1]}`;
-            else cell.innerHTML = `${productArray[i - 1]}`;
+            cell.innerHTML = `${productArray[i - 1]}`;
         }
         const date = new Date(productArray[7]);
         const options = { day: 'numeric', month: 'long', year: 'numeric' };
@@ -358,8 +394,7 @@ async function searchString(event) {
         await addbts(cell, 'search')
         for(let i = 1; i < 8; i++) {
             let cell = newRow.insertCell(i);
-            if(i == 4 || i == 5 || i == 6) cell.innerHTML = `${productArray[i - 1]}`;
-            else cell.innerHTML = `${productArray[i - 1]}`;
+            cell.innerHTML = `${productArray[i - 1]}`;
         }
         const date = new Date(productArray[7]);
         const options = { day: 'numeric', month: 'long', year: 'numeric' };
@@ -383,8 +418,7 @@ async function updateSearch() {
         await addbts(cell, 'search')
         for(let i = 1; i < 8; i++) {
             let cell = newRow.insertCell(i);
-            if(i == 4 || i == 5 || i == 6) cell.innerHTML = `${productArray[i - 1]}`;
-            else cell.innerHTML = `${productArray[i - 1]}`;
+            cell.innerHTML = `${productArray[i - 1]}`;
         }
         const date = new Date(productArray[7]);
         const options = { day: 'numeric', month: 'long', year: 'numeric' };
