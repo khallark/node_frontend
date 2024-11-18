@@ -506,6 +506,8 @@ img {
     #update-form {
         display: flex;
         flex-direction: column;
+        margin-top: 30px;
+        row-gap: 20px;
         align-items: center;
         width: 100%;
     }
