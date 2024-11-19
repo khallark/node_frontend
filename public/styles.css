@@ -312,7 +312,6 @@ input[type="radio"] {
     border-radius: 13px;
     margin-top: 10px;
     border: none;
-    outline: none;
     font-size: larger;
     font-weight: 900;
     background-color: rgb(255, 88, 88);
