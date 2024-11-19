@@ -228,7 +228,7 @@ input[type="radio"] {
         transform: translateY(0px);
     }
 } */
-@keyframes pop-up {
+/* @keyframes pop-up {
     from {
         opacity: 0;
         transform: translateY(calc(var(--safe-area-inset-top, 0px) + 30px));
@@ -236,7 +236,7 @@ input[type="radio"] {
     to {
         transform: translateY(var(--safe-area-inset-top, 0px));
     }
-}
+} */
 
 .home-ct {
     display: flex;
