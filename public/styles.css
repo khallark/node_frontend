@@ -371,10 +371,11 @@ input[type="radio"] {
 .reset {
     height: 50px;
     width: 50px;
+    min-width: 50px;
     border: none;
     outline: none;
     background-color: red;
-    border-radius: 50%;
+    border-radius: 25px;
     z-index: 1;
     cursor: pointer;
     user-select: none;
