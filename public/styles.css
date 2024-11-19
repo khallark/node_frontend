@@ -240,7 +240,7 @@ input[type="radio"] {
     overflow: hidden;
     width: calc(100% - 170px);
     min-width: 200px;
-    animation: pop-up 0.4s ease-in 0s 1 normal;
+    animation: pop-up 0.4s ease-in 0s 1 forwards;
     margin-top: 30px;
     background: none;
 }
@@ -253,7 +253,7 @@ input[type="radio"] {
     height: 100vh;
     width: calc(100% - 170px);
     min-width: 200px;
-    animation: pop-up 0.4s ease-in 0s 1 normal;
+    animation: pop-up 0.4s ease-in 0s 1 forwards;
     margin-top: 30px;
     background: none;
 }
@@ -285,7 +285,7 @@ input[type="radio"] {
     align-items: center;
     width: calc(100% - 170px);
     min-width: 200px;
-    animation: pop-up 0.4s ease-in 0s 1 normal;
+    animation: pop-up 0.4s ease-in 0s 1 forwards;
     margin-top: 30px;
     background: none;
 }
@@ -348,7 +348,7 @@ input[type="radio"] {
     row-gap: 20px;
     width: calc(100% - 170px);
     min-width: 200px;
-    animation: pop-up 0.4s ease-in 0s 1 normal;
+    animation: pop-up 0.4s ease-in 0s 1 forwards;
     margin-top: 30px;
     background: none;
 }
@@ -363,7 +363,7 @@ input[type="radio"] {
     row-gap: 20px;
     width: calc(100% - 170px);
     min-width: 200px;
-    animation: pop-up 0.4s ease-in 0s 1 normal;
+    animation: pop-up 0.4s ease-in 0s 1 forwards;
     margin-top: 30px;
     background: none;
 }
@@ -456,7 +456,7 @@ img {
     th {
         padding: 1px;
         font-size:0.6rem;
-        word-break: normal;
+        word-break: forwards;
         padding-top: 6px;
         padding-bottom: 6px;
     }
