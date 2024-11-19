@@ -210,15 +210,7 @@ input[type="radio"] {
     color: rgb(0, 0, 0);
     z-index: -1;
 }
-/* .tab-content {
-    display: none;
-    height: auto;
-    height: 100vh;
-    width: calc(100% - 170px);
-    min-width: 200px;
-    animation: pop-up 0.4s ease-in 0s 1 normal;
-    background: none;
-} */
+
 @keyframes pop-up {
     from {
         opacity: 0;
