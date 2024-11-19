@@ -214,7 +214,7 @@ input[type="radio"] {
 @keyframes pop-up {
     from {
         opacity: 0;
-        transform: translateY(-30px);
+        transform: translateY(-15px);
     }
     to {
         transform: translateY(0px);
@@ -232,7 +232,7 @@ input[type="radio"] {
     overflow: hidden;
     width: calc(100% - 170px);
     min-width: 200px;
-    animation: pop-up 0.4s ease-in 0s 1 normal;
+    animation: pop-up 0.3s ease-in 0s 1 normal;
     background: none;
 }
 .search-ct {
@@ -244,7 +244,7 @@ input[type="radio"] {
     height: 100vh;
     width: calc(100% - 170px);
     min-width: 200px;
-    animation: pop-up 0.4s ease-in 0s 1 normal;
+    animation: pop-up 0.3s ease-in 0s 1 normal;
     background: none;
 }
 .search-slot {
@@ -275,7 +275,7 @@ input[type="radio"] {
     align-items: center;
     width: calc(100% - 170px);
     min-width: 200px;
-    animation: pop-up 0.4s ease-in 0s 1 normal;
+    animation: pop-up 0.3s ease-in 0s 1 normal;
     background: none;
 }
 .name {
@@ -337,7 +337,7 @@ input[type="radio"] {
     row-gap: 20px;
     width: calc(100% - 170px);
     min-width: 200px;
-    animation: pop-up 0.4s ease-in 0s 1 normal;
+    animation: pop-up 0.3s ease-in 0s 1 normal;
     background: none;
 }
 .expired-ct {
@@ -351,7 +351,7 @@ input[type="radio"] {
     row-gap: 20px;
     width: calc(100% - 170px);
     min-width: 200px;
-    animation: pop-up 0.4s ease-in 0s 1 normal;
+    animation: pop-up 0.3s ease-in 0s 1 normal;
     background: none;
 }
 .home-slot {
