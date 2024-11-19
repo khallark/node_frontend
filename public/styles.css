@@ -222,10 +222,10 @@ input[type="radio"] {
 @keyframes pop-up {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        /* transform: translateY(30px); */
     }
     to {
-        transform: translateY(0);
+        transform: translateY(-30px);
     }
 }
 
@@ -241,6 +241,7 @@ input[type="radio"] {
     width: calc(100% - 170px);
     min-width: 200px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
+    margin-top: 30px;
     background: none;
 }
 .search-ct {
@@ -253,6 +254,7 @@ input[type="radio"] {
     width: calc(100% - 170px);
     min-width: 200px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
+    margin-top: 30px;
     background: none;
 }
 .search-slot {
@@ -284,6 +286,7 @@ input[type="radio"] {
     width: calc(100% - 170px);
     min-width: 200px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
+    margin-top: 30px;
     background: none;
 }
 .name {
@@ -346,6 +349,7 @@ input[type="radio"] {
     width: calc(100% - 170px);
     min-width: 200px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
+    margin-top: 30px;
     background: none;
 }
 .expired-ct {
@@ -360,6 +364,7 @@ input[type="radio"] {
     width: calc(100% - 170px);
     min-width: 200px;
     animation: pop-up 0.4s ease-in 0s 1 normal;
+    margin-top: 30px;
     background: none;
 }
 .home-slot {
