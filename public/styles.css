@@ -225,7 +225,8 @@ input[type="radio"] {
         /* transform: translateY(30px); */
     }
     to {
-        transform: translateY(-30px);
+        /* transform: translateY(-30px); */
+        margin-top: 0px;
     }
 }
 
