@@ -222,7 +222,7 @@ input[type="radio"] {
 @keyframes pop-up {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(-30px);
     }
     to {
         transform: translateY(0px);
