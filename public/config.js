@@ -130,7 +130,6 @@ async function __deleteTuple(category, product_n, batch_no, qty, price, manufact
 
         // Optionally handle the response data here if needed
         const data = await response.text(); // If the server sends a message
-        console.log('Delete successful:', data);
 
     } catch (error) {
         console.error('Error deleting product:', error);
@@ -164,8 +163,7 @@ async function __addTuple(productDetails) {
         if (!response.ok) {
             throw new Error(`Failed to add product: ${response.statusText}`);
         }
-        const data = await response.text(); 
-        console.log('Product added successfully:', data);
+        const data = await response.text();
     } catch (error) {
         console.error('Error adding product:', error);
         throw error; // Propagate the error up to handle in addRow
@@ -244,6 +242,8 @@ function deleteAllChildren(parentDiv) {
     }
 }
 function convertDateFormat(dateString) {
+    if(dateString == '') return '';
+
     // Create a new Date object from the input string
     const date = new Date(dateString);
     
@@ -259,6 +259,12 @@ function convertDateFormat(dateString) {
 
     // Return the formatted date string
     return `${year}-${month}-${day}`;
+}
+function TexualDateFormat(_date) {
+    if(_date === '') return '';
+    const date = new Date(_date);
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
 }
 function normalizeSpaces(str) {
     // Trim leading/trailing spaces and replace multiple spaces with a single space
@@ -303,11 +309,8 @@ async function addAll() {
             let cell = newRow.insertCell(i);
             cell.innerHTML = `${productArray[i - 1]}`;
         }
-        const date = new Date(productArray[7]);
-        const options = { day: 'numeric', month: 'long', year: 'numeric' };
-        productArray[7] = date.toLocaleDateString('en-US', options);
         cell = newRow.insertCell(8);
-        cell.innerHTML = `${productArray[7]}`;
+        cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
     }
 }
 
@@ -326,11 +329,8 @@ async function addExpiring() {
             let cell = newRow.insertCell(i);
             cell.innerHTML = `${productArray[i - 1]}`;
         }
-        const date = new Date(productArray[7]);
-        const options = { day: 'numeric', month: 'long', year: 'numeric' };
-        productArray[7] = date.toLocaleDateString('en-US', options);
         cell = newRow.insertCell(8);
-        cell.innerHTML = `${productArray[7]}`;
+        cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
     }
 }
 
@@ -349,11 +349,8 @@ async function addExpiring3() {
             let cell = newRow.insertCell(i);
             cell.innerHTML = `${productArray[i - 1]}`;
         }
-        const date = new Date(productArray[7]);
-        const options = { day: 'numeric', month: 'long', year: 'numeric' };
-        productArray[7] = date.toLocaleDateString('en-US', options);
         cell = newRow.insertCell(8);
-        cell.innerHTML = `${productArray[7]}`;
+        cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
     }
 }
 
@@ -372,11 +369,8 @@ async function addExpired() {
             let cell = newRow.insertCell(i);
             cell.innerHTML = `${productArray[i - 1]}`;
         }
-        const date = new Date(productArray[7]);
-        const options = { day: 'numeric', month: 'long', year: 'numeric' };
-        productArray[7] = date.toLocaleDateString('en-US', options);
         cell = newRow.insertCell(8);
-        cell.innerHTML = `${productArray[7]}`;
+        cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
     }
 }
 
@@ -396,11 +390,8 @@ async function searchString(event) {
             let cell = newRow.insertCell(i);
             cell.innerHTML = `${productArray[i - 1]}`;
         }
-        const date = new Date(productArray[7]);
-        const options = { day: 'numeric', month: 'long', year: 'numeric' };
-        productArray[7] = date.toLocaleDateString('en-US', options);
         cell = newRow.insertCell(8);
-        cell.innerHTML = `${productArray[7]}`;
+        cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
     }
 }
 
@@ -420,11 +411,8 @@ async function updateSearch() {
             let cell = newRow.insertCell(i);
             cell.innerHTML = `${productArray[i - 1]}`;
         }
-        const date = new Date(productArray[7]);
-        const options = { day: 'numeric', month: 'long', year: 'numeric' };
-        productArray[7] = date.toLocaleDateString('en-US', options);
         cell = newRow.insertCell(8);
-        cell.innerHTML = `${productArray[7]}`;
+        cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
     }
 }
 
@@ -454,6 +442,11 @@ function isValidDateFormat(dateString) {
 
 
 async function addRow() {
+    const Pdate = document.getElementById('purchase-date').value;
+    if(Pdate != '' && !isValidDateFormat(Pdate)) {
+        console.log('invalid purchase-date error');
+        return;
+    }
     const vals = [
         document.getElementById('create-cat').value,
         normalizeSpaces(document.getElementById('inp-1').value),
@@ -461,7 +454,7 @@ async function addRow() {
         normalizeSpaces(document.getElementById('inp-3').value),
         normalizeSpaces(document.getElementById('inp-4').value),
         normalizeSpaces(document.getElementById('inp-5').value),
-        normalizeSpaces(document.getElementById('inp-6').value),
+        normalizeSpaces(document.getElementById('inp-6').value + ' (' + TexualDateFormat(Pdate) + ')'),
         normalizeSpaces(document.getElementById('inp-7').value),
         document.getElementById('create-sold').value
     ];
@@ -482,7 +475,6 @@ async function addRow() {
     const product = await __fetch_hard_searched_products(vals[1]);
     
     if(product.length > 0) {
-        
         console.log('product name should be unique')
         return;
     }
@@ -499,6 +491,7 @@ async function addRow() {
     document.getElementById('inp-4').value =
     document.getElementById('inp-5').value =
     document.getElementById('inp-6').value =
+    document.getElementById('purchase-date').value =
     document.getElementById('inp-7').value = '';
     document.getElementById('create-sold').value = 'FALSE';
 }
@@ -510,13 +503,15 @@ async function fillGlobalArrayWithInitVals(button) {
     const sold_colour = (window.getComputedStyle(button.parentNode).backgroundColor === 'rgb(255, 255, 255)') ? 'TRUE' : 'FALSE';
     InitVals = [row[1].textContent, row[2].textContent, row[3].textContent, row[4].textContent, row[5].textContent,
     row[6].textContent, row[7].textContent, convertDateFormat(row[8].textContent), sold_colour];
+
     document.getElementById('update-cat').value = `${InitVals[0]}`;
     document.getElementById('inp-8').value = `${InitVals[1]}`;
     document.getElementById('inp-9').value = `${InitVals[2]}`;
     document.getElementById('inp-10').value = `${InitVals[3]}`;
     document.getElementById('inp-11').value = `${InitVals[4]}`;
     document.getElementById('inp-12').value = `${InitVals[5]}`;
-    document.getElementById('inp-13').value = `${InitVals[6]}`;
+    document.getElementById('inp-13').value = `${InitVals[6].match(/^(.*?)\s*\(.*\)$/)[1]}`;
+    document.getElementById('purchase-date').value = `${convertDateFormat(InitVals[6].match(/\((.*?)\)/)[1])}`;
     document.getElementById('inp-14').value = `${InitVals[7]}`;
     document.getElementById('update-sold').value = `${InitVals[8]}`
 }
@@ -530,12 +525,18 @@ async function emptyUpdateInputs() {
     document.getElementById('inp-11').value =
     document.getElementById('inp-12').value =
     document.getElementById('inp-13').value =
+    document.getElementById('purchase-date').value =
     document.getElementById('inp-14').value = '';
     document.getElementById('update-sold').value = 'FALSE';
 }
 
 
 async function updateRow(section) {
+    const Pdate = document.getElementById('purchase-date').value;
+    if(Pdate != '' && !isValidDateFormat(Pdate)) {
+        console.log('invalid purchase-date error');
+        return;
+    }
     const vals = [
         document.getElementById('update-cat').value,
         normalizeSpaces(document.getElementById('inp-8').value),
@@ -543,7 +544,7 @@ async function updateRow(section) {
         normalizeSpaces(document.getElementById('inp-10').value),
         normalizeSpaces(document.getElementById('inp-11').value),
         normalizeSpaces(document.getElementById('inp-12').value),
-        normalizeSpaces(document.getElementById('inp-13').value),
+        normalizeSpaces(document.getElementById('inp-13').value + ' (' + TexualDateFormat(Pdate) + ')'),
         normalizeSpaces(document.getElementById('inp-14').value),
         document.getElementById('update-sold').value
     ];
