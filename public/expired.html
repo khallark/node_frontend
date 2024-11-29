@@ -38,8 +38,8 @@
                 align-items: center;
                 border: none;
             ">
-                <h1 style="font-size: 3rem; font-weight: 200;" id="expired-num">Expired Items (0)</h1>
-                <button class="reset" id="expired-reset" onclick="reset('expired')">
+                <h1 style="font-size: 3rem; font-weight: 200;" id="num">Expired Items (0)</h1>
+                <button class="reset" id="expired-reset" onclick="addProducts('expired', 'Expired')">
                     <img id="reset-bttn" src="reset.png" alt="reset">
                 </button>
             </div>
@@ -58,7 +58,7 @@
                             <th>Expiry Date</th>
                         </tr>
                     </thead>
-                    <tbody id="expired-content-table">
+                    <tbody id="content-table">
 
                     </tbody>
                 </table>
@@ -141,7 +141,7 @@
                     </select>
                 </div>
                 <div style="display: flex; flex-direction: row; gap: 20px; width: 450px; justify-content: center; overflow: visible;">
-                    <button id="update-submit" class="submit" onclick="updateRow('expired')">Update</button>
+                    <button id="update-submit" class="submit" onclick="updateRow('expired', 'Expired')">Update</button>
                     <button id="update-submit" class="submit" onclick="removeUpdateTemplate()">Cancel</button>
                 </div>
                 <div id="s-b"></div>
@@ -168,7 +168,7 @@
         event.preventDefault();
     }
     document.addEventListener('DOMContentLoaded', async () => {
-        await addExpired();
+        await addProducts('expired', 'Expired');
     });
 </script>
 </html>

@@ -41,7 +41,7 @@
             ">
                 <input type="text" id="search-input" class="search-input" placeholder="Search for the products...">
             </div>
-            <div style="height: 45px; min-height: 45px;"><h1 style="font-size: 3rem; font-weight: 200;" id="search-num">Items (0)</h1></div>
+            <div style="height: 45px; min-height: 45px;"><h1 style="font-size: 3rem; font-weight: 200;" id="num">Items (0)</h1></div>
             <div class="table-div">
                 <table style="font-size: 1rem;">
                     <thead>
@@ -57,7 +57,7 @@
                             <th>Expiry Date</th>
                         </tr>
                     </thead>
-                    <tbody id="search-content-table">
+                    <tbody id="content-table">
 
                     </tbody>
                 </table>
@@ -141,7 +141,7 @@
                     </select>
                 </div>
                 <div style="display: flex; flex-direction: row; gap: 20px; width: 450px; justify-content: center; overflow: visible;">
-                    <button id="update-submit" class="submit" onclick="updateRow('search')">Update</button>
+                    <button id="update-submit" class="submit" onclick="updateRow('search', 'search')">Update</button>
                     <button id="update-submit" class="submit" onclick="removeUpdateTemplate()">Cancel</button>
                 </div>
                 <div id="s-b"></div>

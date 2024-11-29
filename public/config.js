@@ -1,4 +1,4 @@
-let InitVals = []
+let InitVals = [];
 
 function disCont(section) {
     const currentPath = window.location.pathname;
@@ -6,7 +6,7 @@ function disCont(section) {
 }
 
 function dash_toggle(bool) {
-    let dashboard = document.getElementById('dboard')
+    let dashboard = document.getElementById('dboard');
     if(bool) {
         dashboard.style.transform = 'translateX(0px)';
     } else {
@@ -25,84 +25,67 @@ function handleMediaChange(event) {
 mediaQuery.addEventListener("change", handleMediaChange);
 
 
+async function __addORsearch(type_fetch) {
+    if(type_fetch === 'searchStringPref') return await __fetchSearched();
+    else return await __fetchProducts(type_fetch);
+}
 
-
-
-
-
-
-
-
-
-
-// Function to fetch all products and return the JSON data
-async function __fetchAllProducts() {
+async function __fetchProducts(type_fetch) {
     try {
-        const response = await fetch('https://prods-exp-server.onrender.com/allProds');
+        const response = await fetch(`https://prods-exp-server.onrender.com/${type_fetch}`);
         
         if (!response.ok) {
-            throw new Error(`Failed to fetch all products: ${response.statusText}`);
+            throw new Error(`Failed to fetch products: ${response.statusText}`);
         }
         
-        // Return the parsed JSON data
         return await response.json();
         
     } catch (error) {
-        console.error('Error fetching all products:', error);
-        return null;  // Return null in case of error
+        console.error('Error fetching products:', error);
+        return null;
     }
 }
 
-// Function to fetch expiring products and return the JSON data
-async function __fetchExpiringProducts() {
+
+function formattedSearch(str) {
+    str = str.trim();
+    if(!str) return '*&!$%@@*%^&&$#^@%$';
+    return str;
+}
+
+let searchTimeout;
+let currentController;
+function debounceSearch(callback, delay = 300) {
+    return (...args) => {
+        if (searchTimeout) clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => callback(...args), delay);
+    };
+}
+
+async function __fetchSearched() {
+    if (currentController) {
+        currentController.abort();
+    }
+    currentController = new AbortController();
+
     try {
-        const response = await fetch('https://prods-exp-server.onrender.com/expiring');
-        
+        const string = encodeURIComponent(formattedSearch(document.getElementById('search-input').value));
+        const response = await fetch(
+            `https://prods-exp-server.onrender.com/searchStringPref/${string}`,
+            { signal: currentController.signal }
+        );
+
         if (!response.ok) {
             throw new Error(`Failed to fetch expiring products: ${response.statusText}`);
         }
-        
-        // Return the parsed JSON data
-        return await response.json();
-        
-    } catch (error) {
-        console.error('Error fetching expiring products:', error);
-        return null;  // Return null in case of error
-    }
-}
 
-async function __fetchExpiringProducts3() {
-    try {
-        const response = await fetch('https://prods-exp-server.onrender.com/expiring3');
-        
-        if (!response.ok) {
-            throw new Error(`Failed to fetch expiring products: ${response.statusText}`);
-        }
-        
-        // Return the parsed JSON data
         return await response.json();
-        
-    } catch (error) {
-        console.error('Error fetching expiring products:', error);
-        return null;  // Return null in case of error
-    }
-}
 
-// Function to fetch expired products and return the JSON data
-async function __fetchExpiredProducts() {
-    try {
-        const response = await fetch('https://prods-exp-server.onrender.com/expired');
-        
-        if (!response.ok) {
-            throw new Error(`Failed to fetch expired products: ${response.statusText}`);
-        }
-        
-        // Return the parsed JSON data
-        return await response.json();
-        
     } catch (error) {
-        console.error('Error fetching expired products:', error);
-        return null;  // Return null in case of error
+        if (error.name !== 'AbortError') {
+            console.error('Error fetching products:', error);
+        }
+        return new Array();
     }
 }
 
@@ -121,15 +104,14 @@ async function __deleteTuple(category, product_n, batch_no, qty, price, manufact
     const fullUrl = `${baseUrl}?${params}`;
     try {
         const response = await fetch(fullUrl, {
-            method: 'DELETE'  // Specify the DELETE method
+            method: 'DELETE'
         });
         
         if (!response.ok) {
             throw new Error(`Failed to delete product: ${response.statusText}`);
         }
 
-        // Optionally handle the response data here if needed
-        const data = await response.text(); // If the server sends a message
+        const data = await response.text();
 
     } catch (error) {
         console.error('Error deleting product:', error);
@@ -137,7 +119,6 @@ async function __deleteTuple(category, product_n, batch_no, qty, price, manufact
 }
 
 async function __addTuple(productDetails) {
-    // Destructure the array into individual variables
     const [cat, product_n, batch_no, qty, price, manufacturer_n, bill_no, exp_date, is_sold] = productDetails;
 
     const baseUrl = 'https://prods-exp-server.onrender.com/addproduct';
@@ -166,54 +147,11 @@ async function __addTuple(productDetails) {
         const data = await response.text();
     } catch (error) {
         console.error('Error adding product:', error);
-        throw error; // Propagate the error up to handle in addRow
+        throw error;
     }
 }
 
 
-function formattedSearch(str) {
-    str = str.trim();
-    if(!str) return 'whderjn';
-    return str;
-}
-let searchTimeout;
-let currentController;  // Store the AbortController for canceling previous requests
-
-function debounceSearch(callback, delay = 300) {
-    return (...args) => {
-        if (searchTimeout) clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => callback(...args), delay);
-    };
-}
-
-async function __fetch_searched_products(string) {
-    if (currentController) {
-        // Cancel the previous request
-        currentController.abort();
-    }
-    currentController = new AbortController(); // Create a new controller for the new request
-
-    try {
-        string = formattedSearch(string);
-        const response = await fetch(
-            `https://prods-exp-server.onrender.com/searchStringPref/${encodeURIComponent(string)}`,
-            { signal: currentController.signal }
-        );
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch expiring products: ${response.statusText}`);
-        }
-
-        // Return the parsed JSON data
-        return await response.json();
-
-    } catch (error) {
-        if (error.name !== 'AbortError') {
-            console.error('Error fetching products:', error);
-        }
-        return new Array(); // Return null in case of error
-    }
-}
 async function __fetch_hard_searched_products(string) {
     try {
         string = formattedSearch(string)
@@ -223,43 +161,39 @@ async function __fetch_hard_searched_products(string) {
             throw new Error(`Failed to fetch expiring products: ${response.statusText}`);
         }
         
-        // Return the parsed JSON data
         return await response.json();
         
     } catch (error) {
         console.error('Error fetching products:', error);
-        return null;  // Return null in case of error
+        return null;
     }
 }
 
 function deleteAllChildren(parentDiv) {
-    const children = parentDiv.children; // Get all children of the parent div
+    const children = parentDiv.children;
     const numberOfChildren = children.length;
 
-    // Loop through the children starting from the last child
     for (let i = numberOfChildren - 1; i >= 0; i--) {
-        parentDiv.removeChild(children[i]); // Remove child element
+        parentDiv.removeChild(children[i]);
     }
 }
+
 function convertDateFormat(dateString) {
     if(dateString == '') return '';
 
-    // Create a new Date object from the input string
     const date = new Date(dateString);
     
-    // Check if the date is valid
     if (isNaN(date.getTime())) {
         throw new Error("Invalid date format");
     }
 
-    // Get the year, month, and day
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
 
-    // Return the formatted date string
     return `${year}-${month}-${day}`;
 }
+
 function TexualDateFormat(_date) {
     if(_date === '') return '';
     const date = new Date(_date);
@@ -267,13 +201,18 @@ function TexualDateFormat(_date) {
     return date.toLocaleDateString('en-US', options);
 }
 function normalizeSpaces(str) {
-    // Trim leading/trailing spaces and replace multiple spaces with a single space
     return str.trim().replace(/\s+/g, ' ');
 }
 
+async function delete_row(button, type_fetch, type_text) {
+    const row = button.parentNode.children;
+    await __deleteTuple(row[1].textContent, row[2].textContent, row[3].textContent, row[4].textContent, row[5].textContent, row[6].textContent, row[7].textContent, convertDateFormat(row[8].textContent));
 
+    if(type_fetch === type_text) await searchString('');
+    else await addProducts(type_fetch, type_text);
+}
 
-async function addbts(cell, section) {
+async function addbts(cell, type_fetch, type_text) {
     cell.id = "u-d";
     let update = document.createElement("button");
     update.classList.add("u-d-button");
@@ -288,83 +227,24 @@ async function addbts(cell, section) {
     del.innerText = "D";
     del.style.backgroundColor = "rgba(255, 0, 0, 0.616)";
     del.addEventListener("click", function() {
-        delete_row(cell, section);
+        delete_row(cell, type_fetch, type_text);
     })
-    cell.appendChild(update)
-    cell.appendChild(del)
+    cell.appendChild(update);
+    cell.appendChild(del);
 }
 
-async function addAll() {
-    const products = await __fetchAllProducts();
-    const home_sec = document.getElementById('home-content-table');
-    deleteAllChildren(home_sec);
-    document.getElementById('home-num').textContent = `All Items (${products.length})`;
-    for (let i = 0; i < products.length; i++) {
-        const productArray = Object.values(products[i]);
-        let newRow = home_sec.insertRow();
-        if(productArray[8] === true) newRow.style.backgroundColor = 'white';
-        let cell = newRow.insertCell(0);
-        await addbts(cell, 'home')
-        for(let i = 1; i < 8; i++) {
-            let cell = newRow.insertCell(i);
-            cell.innerHTML = `${productArray[i - 1]}`;
-        }
-        cell = newRow.insertCell(8);
-        cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
-    }
-}
 
-async function addExpiring() {
-    const products = await __fetchExpiringProducts();
-    const expiring_sec = document.getElementById('expiring-content-table');
-    deleteAllChildren(expiring_sec);
-    document.getElementById('expiring-num').textContent = `Expiring Items (${products.length})`;
+async function addProducts(type_fetch, type_text) {
+    const products = await __addORsearch(type_fetch);
+    const prods_sec = document.getElementById('content-table');
+    deleteAllChildren(prods_sec);
+    document.getElementById('num').textContent = `${type_text} Items (${products.length})`;
     for (let i = 0; i < products.length; i++) {
         const productArray = Object.values(products[i]);
-        let newRow = expiring_sec.insertRow();
+        let newRow = prods_sec.insertRow();
         if(productArray[8] === true) newRow.style.backgroundColor = 'white';
         let cell = newRow.insertCell(0);
-        await addbts(cell, 'expiring')
-        for(let i = 1; i < 8; i++) {
-            let cell = newRow.insertCell(i);
-            cell.innerHTML = `${productArray[i - 1]}`;
-        }
-        cell = newRow.insertCell(8);
-        cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
-    }
-}
-
-async function addExpiring3() {
-    const products = await __fetchExpiringProducts3();
-    const expiring_sec = document.getElementById('expiring-content-table');
-    deleteAllChildren(expiring_sec);
-    document.getElementById('expiring-num').textContent = `Expiring Items (${products.length})`;
-    for (let i = 0; i < products.length; i++) {
-        const productArray = Object.values(products[i]);
-        let newRow = expiring_sec.insertRow();
-        if(productArray[8] === true) newRow.style.backgroundColor = 'white';
-        let cell = newRow.insertCell(0);
-        await addbts(cell, 'expiring')
-        for(let i = 1; i < 8; i++) {
-            let cell = newRow.insertCell(i);
-            cell.innerHTML = `${productArray[i - 1]}`;
-        }
-        cell = newRow.insertCell(8);
-        cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
-    }
-}
-
-async function addExpired() {
-    const products = await __fetchExpiredProducts();
-    const expired_sec = document.getElementById('expired-content-table');
-    deleteAllChildren(expired_sec);
-    document.getElementById('expired-num').textContent = `Expired Items (${products.length})`;
-    for (let i = 0; i < products.length; i++) {
-        const productArray = Object.values(products[i]);
-        let newRow = expired_sec.insertRow();
-        if(productArray[8] === true) newRow.style.backgroundColor = 'white';
-        let cell = newRow.insertCell(0);
-        await addbts(cell, 'expired')
+        await addbts(cell, type_fetch, type_text);
         for(let i = 1; i < 8; i++) {
             let cell = newRow.insertCell(i);
             cell.innerHTML = `${productArray[i - 1]}`;
@@ -375,17 +255,16 @@ async function addExpired() {
 }
 
 async function searchString(event) {
-    const string = event.target.value;
-    const products = await __fetch_searched_products(string);
-    const search_sec = document.getElementById('search-content-table');
+    const products = await __addORsearch('searchStringPref');
+    const search_sec = document.getElementById('content-table');
     deleteAllChildren(search_sec);
-    document.getElementById('search-num').textContent = `Items (${products.length})`;
+    document.getElementById('num').textContent = `Items (${products.length})`;
     for (let i = 0; i < products.length; i++) {
         const productArray = Object.values(products[i]);
         let newRow = search_sec.insertRow();
         if(productArray[8] === true) newRow.style.backgroundColor = 'white';
         let cell = newRow.insertCell(0);
-        await addbts(cell, 'search')
+        await addbts(cell, 'search', 'search');
         for(let i = 1; i < 8; i++) {
             let cell = newRow.insertCell(i);
             cell.innerHTML = `${productArray[i - 1]}`;
@@ -393,45 +272,6 @@ async function searchString(event) {
         cell = newRow.insertCell(8);
         cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
     }
-}
-
-async function updateSearch() {
-    const string = document.getElementById('search-input').value;
-    const products = await __fetch_searched_products(string);
-    const search_sec = document.getElementById('search-content-table');
-    deleteAllChildren(search_sec);
-    document.getElementById('search-num').textContent = `Items (${products.length})`;
-    for (let i = 0; i < products.length; i++) {
-        const productArray = Object.values(products[i]);
-        let newRow = search_sec.insertRow();
-        if(productArray[8] === true) newRow.style.backgroundColor = 'white';
-        let cell = newRow.insertCell(0);
-        await addbts(cell, 'search')
-        for(let i = 1; i < 8; i++) {
-            let cell = newRow.insertCell(i);
-            cell.innerHTML = `${productArray[i - 1]}`;
-        }
-        cell = newRow.insertCell(8);
-        cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
-    }
-}
-
-async function delete_row(button, section) {
-    const row = button.parentNode.children;
-    await __deleteTuple(row[1].textContent, row[2].textContent, row[3].textContent, row[4].textContent, row[5].textContent, row[6].textContent, row[7].textContent, convertDateFormat(row[8].textContent));
-    if(section === 'home') await addAll();
-    if(section === 'search') await updateSearch();
-    if(section === 'expiring') await addExpiring();
-    if(section === 'expiring3') await addExpiring3();
-    if(section === 'expired') await addExpired();
-}
-
-
-async function reset(string) {
-    if(string === 'all') await addAll();
-    else if(string === 'expiring') await addExpiring();
-    else if(string === 'expiring3') await addExpiring3();
-    else if(sting === 'expired') await addExpired();
 }
 
 
@@ -444,7 +284,7 @@ function isValidDateFormat(dateString) {
 async function addRow() {
     const Pdate = document.getElementById('purchase-date').value;
     if(Pdate != '' && !isValidDateFormat(Pdate)) {
-        console.log('invalid purchase-date error');
+        console.error('invalid purchase-date error');
         return;
     }
     const vals = [
@@ -460,22 +300,22 @@ async function addRow() {
     ];
     
     if(vals[0] === 'none') {
-        console.log('None is not a valid category.');
+        console.error('None is not a valid category.');
         return;
     }
     if(vals[1] === '') {
-        console.log('Product name cannot be empty.')
+        console.error('Product name cannot be empty.');
         return;
     }
     if(!isValidDateFormat(vals[7])) {
-        console.log('invalid date format error')
+        console.error('invalid date format error');
         return;
     }
     
     const product = await __fetch_hard_searched_products(vals[1]);
     
     if(product.length > 0) {
-        console.log('product name should be unique')
+        console.error('product name should be unique');
         return;
     }
     try {
@@ -513,7 +353,7 @@ async function fillGlobalArrayWithInitVals(button) {
     document.getElementById('inp-13').value = `${InitVals[6].match(/^(.*?)\s*\(.*\)$/)[1]}`;
     document.getElementById('purchase-date').value = `${convertDateFormat(InitVals[6].match(/\((.*?)\)/)[1])}`;
     document.getElementById('inp-14').value = `${InitVals[7]}`;
-    document.getElementById('update-sold').value = `${InitVals[8]}`
+    document.getElementById('update-sold').value = `${InitVals[8]}`;
 }
 
 async function emptyUpdateInputs() {
@@ -531,10 +371,10 @@ async function emptyUpdateInputs() {
 }
 
 
-async function updateRow(section) {
+async function updateRow(type_fetch, type_text) {
     const Pdate = document.getElementById('purchase-date').value;
     if(Pdate != '' && !isValidDateFormat(Pdate)) {
-        console.log('invalid purchase-date error');
+        console.error('invalid purchase-date error');
         return;
     }
     const vals = [
@@ -549,15 +389,15 @@ async function updateRow(section) {
         document.getElementById('update-sold').value
     ];
     if(vals[0] === 'none') {
-        console.log('None is not a valid category.');
+        console.error('None is not a valid category.');
         return;
     }
     if(vals[1] === '') {
-        console.log('Product name cannot be empty.')
+        console.error('Product name cannot be empty.');
         return;
     }
     if(!isValidDateFormat(vals[7])) {
-        console.log('invalid date format error')
+        console.error('invalid date format error');
         return;
     }
 
@@ -574,9 +414,7 @@ async function updateRow(section) {
     main.classList.remove("wrapper-blur");
     update.id = "no-show";
     await emptyUpdateInputs();
-    if(section === 'home') await addAll();
-    if(section === 'search') await updateSearch();
-    if(section === 'expiring') await addExpiring();
-    if(section === 'expiring3') await addExpiring3();
-    if(section === 'expired') await addExpired();
+
+    if(type_fetch === type_text) await searchString('');
+    else await addProducts(type_fetch, type_text);
 }
