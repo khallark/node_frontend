@@ -256,9 +256,10 @@ input[type="radio"] {
 }
 .ops-button-active .lower{
     background-color: black;
-    z-index: 1000;
 }
 .ops-button-active .upper{
+    left: -10px;
+    bottom: -6px;
     background-color: black;
 }
 
