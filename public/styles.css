@@ -168,7 +168,7 @@ td {
     box-shadow: 0 0 20px 5px rgb(107, 107, 107);
     transform: translateX(0px);
     overflow: visible;
-    background-color: #6d6d6d;
+    background-color: #5c5c5c;
 }
 .ops-text {
     margin: 10px;
@@ -221,7 +221,7 @@ input[type="radio"] {
     color: rgb(212, 212, 212);
     cursor: pointer;
     user-select: none;
-    background-color: #6d6d6d;
+    background-color: #5c5c5c;
 }
 .ops-button:hover {
     border-top: 1px solid rgba(255, 255, 255, 0.527);
@@ -249,7 +249,7 @@ input[type="radio"] {
     color: rgb(212, 212, 212);
     cursor: pointer;
     user-select: none;
-    background-color: #6d6d6d;
+    background-color: #5c5c5c;
     font-weight: 400;
     color: rgb(0, 0, 0);
     transform: translateX(10px) translateY(-5px) translateZ(10px);
@@ -509,7 +509,7 @@ img {
     }
     .dashboard {
         z-index: 100;
-        background-color: #6d6d6d;
+        background-color: #5c5c5c;
         transform: translateX(-170px);
         transition: 0.2s ease-out;
         overflow: hidden;
