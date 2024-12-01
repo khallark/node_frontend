@@ -195,7 +195,8 @@ input[type="radio"] {
     position: absolute;
     left: -7px;
     bottom: -11px;
-    background-color: white;
+    /* background-color: white; */
+    background: none;
     height: 22%;
     width: 102%;
     transform: skew(-42deg);
@@ -227,6 +228,9 @@ input[type="radio"] {
     border-top: 1px solid rgba(255, 255, 255, 0.527);
     border-left: 1px solid rgba(255, 255, 255, 0.527);
     transform: translateX(10px) translateY(-5px) translateZ(10px);
+}
+.ops-button:hover .lower {
+    background-color: white;
 }
 .ops-button-active {
     overflow: visible;
