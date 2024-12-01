@@ -511,6 +511,7 @@ img {
         background-color: #6d6d6d;
         transform: translateX(-170px);
         transition: 0.2s ease-out;
+        overflow: hidden;
     }
     .ops-text {
         display: none;

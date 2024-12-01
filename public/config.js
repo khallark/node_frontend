@@ -9,8 +9,10 @@ function dash_toggle(bool) {
     let dashboard = document.getElementById('dboard');
     if(bool) {
         dashboard.style.transform = 'translateX(0px)';
+        dashboard.style.overflow = 'visible';
     } else {
         dashboard.style.transform = 'translateX(-170px)';
+        dashboard.style.overflow = 'hidden';
     }
 }
 
