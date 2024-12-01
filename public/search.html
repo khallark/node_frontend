@@ -16,17 +16,41 @@
             <h1 class="ops-text">Options</h1>
             <div class="dash-toggle" style="position: relative; height: 60px;"><img src="menu.png" alt="Menu" style="height: 30px;" onclick="dash_toggle(false)"></div>
 
-            <div class="ops-button" id="home-bttn" onclick="disCont('home')">Home</div>
+            <div class="ops-button" id="home-bttn" onclick="disCont('home')">
+                <div class="upper"></div>
+                <div class="lower"></div>
+                Home
+            </div>
 
-            <div class="ops-button ops-button-active" id="search-bttn" onclick="disCont('search')">Search</div>
+            <div class="ops-button-active" id="search-bttn" onclick="disCont('search')">
+                <div class="upper"></div>
+                <div class="lower"></div>
+                Search
+            </div>
 
-            <div class="ops-button" id="create-bttn" onclick="disCont('create')">Create entry</div>
+            <div class="ops-button" id="create-bttn" onclick="disCont('create')">
+                <div class="upper"></div>
+                <div class="lower"></div>
+                Create entry
+            </div>
 
-            <div class="ops-button" id="expiring-bttn" onclick="disCont('expiring')">Expiring(< 6M)</div>
+            <div class="ops-button" id="expiring-bttn" onclick="disCont('expiring')">
+                <div class="upper"></div>
+                <div class="lower"></div>
+                Expiring(< 6M)
+            </div>
 
-            <div class="ops-button" id="expiring3-bttn" onclick="disCont('expiring3')">Expiring(< 3M)</div>
+            <div class="ops-button" id="expiring3-bttn" onclick="disCont('expiring3')">
+                <div class="upper"></div>
+                <div class="lower"></div>
+                Expiring(< 3M)
+            </div>
 
-            <div class="ops-button" id="expired-bttn" onclick="disCont('expired')" style="border-bottom: 1px solid rgb(212, 212, 212);">Expired</div>
+            <div class="ops-button" id="expired-bttn" onclick="disCont('expired')" style="border-bottom: 1px solid rgb(212, 212, 212);">
+                <div class="upper"></div>
+                <div class="lower"></div>
+                Expired
+            </div>
         </div>
 
         <div class="search-ct" id="search-content">
