@@ -185,7 +185,7 @@ input[type="radio"] {
     position: absolute;
     left: -10.9px;
     bottom: -5.5px;
-    background-color: white;
+    background: none;
     height: 102%;
     width: 6%;
     transform: skewY(-48deg);
@@ -195,7 +195,6 @@ input[type="radio"] {
     position: absolute;
     left: -7px;
     bottom: -11px;
-    /* background-color: white; */
     background: none;
     height: 22%;
     width: 102%;
@@ -213,13 +212,13 @@ input[type="radio"] {
     border: 1px solid rgba(255, 255, 255, 0.527);
     border-left: none;
     border-top: none;
+    font-family: "Kanit", sans-serif;
     font-size: 1.3rem;
-    font-weight: 200;
-    text-shadow: 1px 1px 1px rgb(92, 92, 92);
+    font-weight: 400;
     color: rgb(119, 119, 119);
     transition: 0.05s linear;
     z-index: 1;
-    color: rgb(212, 212, 212);
+    color: white;
     cursor: pointer;
     user-select: none;
     background-color: #5c5c5c;
@@ -232,6 +231,9 @@ input[type="radio"] {
 .ops-button:hover .lower {
     background-color: white;
 }
+.ops-button:hover .upper {
+    background-color: white;
+}
 .ops-button-active {
     overflow: visible;
     perspective: 100px;
@@ -241,16 +243,14 @@ input[type="radio"] {
     width: 100%;
     height: 50px;
     min-height: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.527);
-    border-left: none;
-    border-top: none;
+    border: 1px solid black;
+    border-top: 1px solid black;
     font-size: 1.3rem;
-    font-weight: 200;
-    text-shadow: 1px 1px 1px rgb(92, 92, 92);
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
     color: rgb(119, 119, 119);
     transition: 0.05s linear;
     z-index: 1;
-    color: rgb(212, 212, 212);
     cursor: pointer;
     user-select: none;
     background-color: #5c5c5c;
@@ -259,13 +259,16 @@ input[type="radio"] {
     transform: translateX(10px) translateY(-5px) translateZ(10px);
     background-color: white;
 }
-.ops-button-active .lower{
-    background-color: black;
-}
 .ops-button-active .upper{
     left: -10px;
     bottom: -6px;
-    background-color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-left: none;
+}
+.ops-button-active .lower{
+    background-color: white;
+    border: 1px solid black;
 }
 
 @keyframes pop-up {
