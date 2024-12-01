@@ -184,9 +184,9 @@ input[type="radio"] {
 .upper {
     position: absolute;
     left: -10.9px;
-    bottom: -5.5px;
+    bottom: -6.5px;
     background: none;
-    height: 102%;
+    height: 103.5%;
     width: 6%;
     transform: skewY(-48deg);
 }
@@ -194,7 +194,7 @@ input[type="radio"] {
 .lower {
     position: absolute;
     left: -7px;
-    bottom: -11px;
+    bottom: -11.5px;
     background: none;
     height: 22%;
     width: 102%;
@@ -260,15 +260,19 @@ input[type="radio"] {
     background-color: white;
 }
 .ops-button-active .upper{
-    left: -10px;
-    bottom: -6px;
+    height: 102%;
+    left: -11px;
+    bottom: -5.5px;
     background-color: white;
-    border: 1px solid black;
-    border-left: none;
+    border-top: 1px solid black;
 }
 .ops-button-active .lower{
+    left: -6.5px;
+    bottom: -11.5px;
+    width: 101.4%;
     background-color: white;
     border: 1px solid black;
+    border-top: none;
 }
 
 @keyframes pop-up {
