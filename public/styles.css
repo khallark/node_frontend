@@ -648,10 +648,10 @@ img {
     .options-box ul li {
         font-size: 1rem;
     }
-    #u-d {
+    /* #u-d {
         display: contents;
         font-size: 2rem;
-    }
+    } */
     th {
         padding: 1px;
         font-size:0.8rem;

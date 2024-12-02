@@ -33,7 +33,6 @@ function clearAll() {
     optionsBox.style.display = "none";
     const type_fetch = menuOptions[2].textContent;
     const type_text = menuOptions[3].textContent;
-    console.log(type_fetch, type_text);
     optionsBox.innerHTML = '';
     optionsBox.innerHTML = `
         <ul>
