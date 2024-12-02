@@ -16,7 +16,7 @@
             <h1 class="ops-text">Options</h1>
             <div class="dash-toggle" style="position: relative; height: 60px;"><img src="menu.png" alt="Menu" style="height: 30px;" onclick="dash_toggle(false)"></div>
 
-            <div class="ops-button" id="home-bttn" style="border-top: 1px solid rgba(255, 255, 255, 0.527);" onclick="disCont('home')">
+            <div class="ops-button" id="home-bttn" style="border-top: 1px solid white;" onclick="disCont('home')">
                 <div class="upper"></div>
                 <div class="lower"></div>
                 Home
@@ -66,7 +66,15 @@
                 <input type="text" id="search-input" class="search-input" placeholder="Search for the products...">
             </div>
             <div style="height: 45px; min-height: 45px;"><h1 style="font-size: 3rem; font-weight: 200;" id="num">Items (0)</h1></div>
-            <div class="table-div">
+            <div id="tablediv" class="table-div">
+                <div class="options-box" id="optionsBox">
+                    <ul>
+                      <li>Update</li>
+                      <li>Delete</li>
+                      <li style="display: none;">search</li>
+                      <li style="display: none;">search</li>
+                    </ul>
+                </div>
                 <table style="font-size: 1rem;">
                     <thead>
                         <tr class="tr">
@@ -165,8 +173,16 @@
                     </select>
                 </div>
                 <div style="display: flex; flex-direction: row; gap: 20px; width: 450px; justify-content: center; overflow: visible;">
-                    <button id="update-submit" class="submit" onclick="updateRow('search', 'search')">Update</button>
-                    <button id="update-submit" class="submit" onclick="removeUpdateTemplate()">Cancel</button>
+                    <button id="update-submit" class="submit" onclick="updateRow('search', 'search')">
+                        <div class="c-edge-1"></div>
+                        <div class="c-edge-2"></div>
+                        Update
+                    </button>
+                    <button id="update-submit" class="submit" onclick="removeUpdateTemplate()">
+                        <div class="c-edge-1"></div>
+                        <div class="c-edge-2"></div>
+                        Cancel
+                    </button>
                 </div>
                 <div id="s-b"></div>
             </form>

@@ -1,12 +1,24 @@
 * {
     margin: 0;
     box-sizing: border-box;
-    font-family: "Be Vietnam Pro", sans-serif;
+    font-family: "Kanit", sans-serif;
     overflow: hidden;
     -webkit-tap-highlight-color: transparent;
 }
 *::-webkit-input-placeholder {
+    color: white;
     font-weight: 200;
+    filter: brightness(0.7);
+}
+::-webkit-scrollbar {
+    background-color: rgb(30, 30, 53);
+    border: 1px solid white;
+    border-left: none;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgb(78, 78, 105);
+    border: 1px solid white;
+    border-left: none;
 }
 html {
     font-size: 12px;
@@ -14,14 +26,39 @@ html {
 body {
     display: flex;
     position: relative;
-    background: linear-gradient(90deg, grey 20%, lightgrey 100%, white 30%);
+    background-color: rgb(30, 30, 53);
 }
 
+.options-box {
+    position: absolute;
+    display: none;
+    border-radius: 5px;
+    background-color: rgb(49, 49, 49);
+    color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+.options-box ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.options-box ul li {
+    padding: 10px;
+    cursor: pointer;
+    width: 100px;
+}
+.options-box ul li:hover {
+    background-color: #464646;
+}
 
+#num {
+    color: white;
+}
 .table-div {
     overflow-y: auto;
     width: 95%;
-    background-color: #dadada;
 }
 table {
     width: 100%;
@@ -31,27 +68,34 @@ table {
     table-layout: fixed;
 }
 table, th, td {
-    border: 1px solid #6d6d6d;
+    border: 1px solid white;
     border-collapse: collapse;
     word-break: break-all;
 }
 th {
     font-size: 1.1rem;
     padding: 10px;
-    border: 1px solid #6d6d6d;
+    font-weight: 600;
+    border: 1px solid white;
 }
 .tr {
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: #afafaf;
+    background-color: rgb(62, 62, 99);
+    color: white;
 }
+
 td {
     padding: 5px;
     font-size: 1.1rem;
-    color: rgb(0, 0, 0);
+    color: white;
     vertical-align: top;
     text-align: left;
+    height: 80px;
+    min-height: 80px;
+    font-weight: 300;
+    /* background-color: rgb(30, 30, 53); */
 }
 
 
@@ -60,6 +104,7 @@ td {
     width: 45px;
     font-size: 1rem;
     padding: 0;
+    display: none;
 }
 
 .u-d-button {
@@ -163,18 +208,18 @@ td {
     min-height: 380px;
     width: 170px;
     min-width: 170px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    box-shadow: 0 0 20px 5px rgb(107, 107, 107);
+    border-right: 1px solid white;
     transform: translateX(0px);
     overflow: visible;
-    background-color: #5c5c5c;
+    background-color: rgb(30, 30, 53);
 }
 .ops-text {
     margin: 10px;
     margin-bottom: 45px;
     font-size: 3rem;
-    font-weight: 100;
+    font-weight: 500;
+    color: white;
+    font-family: "Kanit", sans-serif;
     overflow: visible;
 }
 input[type="radio"] {
@@ -209,8 +254,9 @@ input[type="radio"] {
     width: 100%;
     height: 50px;
     min-height: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.527);
+    border: 1px solid white;
     border-left: none;
+    border-right: none;
     border-top: none;
     font-family: "Kanit", sans-serif;
     font-size: 1.3rem;
@@ -221,11 +267,12 @@ input[type="radio"] {
     color: white;
     cursor: pointer;
     user-select: none;
-    background-color: #5c5c5c;
+    background-color: rgb(30, 30, 53);
 }
 .ops-button:hover {
-    border-top: 1px solid rgba(255, 255, 255, 0.527);
-    border-left: 1px solid rgba(255, 255, 255, 0.527);
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
     transform: translateX(10px) translateY(-5px) translateZ(10px);
 }
 .ops-button:hover .lower {
@@ -253,7 +300,7 @@ input[type="radio"] {
     z-index: 1;
     cursor: pointer;
     user-select: none;
-    background-color: #5c5c5c;
+    background-color: rgb(30, 30, 53);
     font-weight: 400;
     color: rgb(0, 0, 0);
     transform: translateX(10px) translateY(-5px) translateZ(10px);
@@ -322,12 +369,19 @@ input[type="radio"] {
     height: 50px;
     width: 100%;
     bottom: 0;
-    border: none;
+    border: 1px solid white;
     outline: none;
     font-size: 1.3rem;
     padding: 20px;
     border-radius: 30px;
-    background-color: rgb(238, 238, 238);
+    background: none;
+    color: white;
+}
+.search-input:hover {
+    background-color: rgb(62, 62, 99);
+}
+.search-input:focus {
+    background-color: rgb(62, 62, 99);
 }
 
 .create-ct {
@@ -349,45 +403,85 @@ input[type="radio"] {
     height: 100px;
     font-size: 1.6rem;
     font-weight: 900;
+    color: white;
     overflow: visible;
 }
-#create-submit {
-    font-size: 1.5rem;
-    font-weight: 200;
-}
+
 .name-input {
     margin-top: 10px;
     width: 450px;
     height: 50px;
-    border: none;
+    border: 1px solid white;
+    color: white;
     outline: none;
     font-weight: 700;
     font-size: 1.2rem;
     padding: 15px;
-    border-radius: 10px;
-    background-color: rgb(238, 238, 238);
+    background: none;
+}
+.name-input:hover, .name-input:focus {
+    background-color: rgb(78, 78, 105);
+}
+#create-submit {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+#update-submit {
+    font-size: 1.5rem;
+    font-weight: 800;
 }
 .submit {
+    position: relative;
     overflow: visible;
     height: 50px;
     min-height: 50px;
     width: 130px;
-    border-radius: 13px;
-    margin-top: 10px;
-    border: none;
-    font-size: larger;
-    font-weight: 900;
-    background-color: rgb(255, 88, 88);
-    color: white;
-    transition: 0.1s;
+    margin-top: 30px;
+    border: 1px solid black;
+    background-color: white;
+    outline: none;
+    transform: translateX(10px) translateY(-5px) translateZ(10px);
+    transition: 0.05s;
     cursor: pointer;
     user-select: none;
 }
-.submit:hover {
-    background-color: rgb(252, 53, 53);
+.c-edge-1 {
+    position: absolute;
+    height: 101.5%;
+    width: 10px;
+    background-color: white;
+    top: 3.5px;
+    left: -10px;
+    transform-origin: right;
+    transform: skewY(-42deg) scale(1) translateY(-4.4px);
+    border: 1px solid black;
+    border-bottom: 2px solid black;
+    border-left: none;
+    transition: 0.05s linear;
+}
+.c-edge-2 {
+    position: absolute;
+    height: 9px;
+    width: 101%;
+    background-color: white;
+    bottom: -9.2px;
+    left: -4.6px;
+    transform-origin: top;
+    transform: skewX(-48deg) scaleY(1) translateX(5px);
+    border: 1px solid black;
+    border-left: none;
+    border-bottom: none;
+    transition: 0.05s linear;
 }
 .submit:active {
-    background-color: red;
+    border-left: 1px solid black;
+    transform: translateX(0) translateY(0) translateZ(0);
+}
+.submit:active .c-edge-1 {
+    transform: skewY(-42deg) scaleX(0) translateY(-4.4px);
+}
+.submit:active .c-edge-2 {
+    transform: skewX(-48deg) scaleY(0) translateX(5px);
 }
 .expiring-ct {
     display: flex;
@@ -420,12 +514,15 @@ input[type="radio"] {
     display: flex;
     position: relative;
     height: fit-content;
+    overflow: visible;
     min-height: 150px;
     width: 90%;
+    z-index: 1;
 }
 .expire-slot {
     display: flex;
     position: relative;
+    overflow: visible;
     height: fit-content;
     min-height: 150px;
     width: 90%;
@@ -436,24 +533,67 @@ input[type="radio"] {
     min-width: 50px;
     border: none;
     outline: none;
-    background-color: red;
-    border-radius: 25px;
+    background-color: rgb(255, 255, 255);
     z-index: 1;
     cursor: pointer;
     user-select: none;
+    position: relative;
+    overflow: visible;
+    perspective: 100px;
+    transform: translateX(10px) translateY(-5px) translateZ(10px);
+    border: 1px solid black;
+    border-left: none;
+    z-index: 0;
+    transition: 0.05s linear;
 }
 #reset-bttn {
-    height: 25px;
-    width: 25px;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    height: 60px;
+    width: 60px;
     z-index: -1;
     cursor: pointer;
     user-select: none;
+    transition: 0.1s linear;
+    z-index: -2;
 }
-.reset:hover {
-    background-color: rgb(197, 0, 0);
+.edge-1 {
+    position: absolute;
+    height: 101.5%;
+    width: 10px;
+    background-color: white;
+    top: 3.5px;
+    left: -10px;
+    transform-origin: right;
+    transform: skewY(-42deg) scale(1) translateY(-4.4px);
+    border: 1px solid black;
+    border-left: none;
+    transition: 0.05s linear;
+}
+.edge-2 {
+    position: absolute;
+    height: 9px;
+    width: 102%;
+    background-color: white;
+    bottom: -9.2px;
+    left: -4.6px;
+    transform-origin: top;
+    transform: skewX(-48deg) scaleY(1) translateX(5px);
+    border: 1px solid black;
+    border-left: none;
+    border-bottom: none;
+    transition: 0.05s linear;
 }
 .reset:active {
-    background-color: rgb(131, 0, 0);
+    border-left: 1px solid black;
+    transform: translateX(0) translateY(0) translateZ(0);
+}
+.reset:active .edge-1 {
+    transform: skewY(-42deg) scaleX(0) translateY(-4.4px);
+}
+.reset:active .edge-2 {
+    transform: skewX(-48deg) scaleY(0) translateX(5px);
 }
 
 
@@ -482,8 +622,8 @@ input[type="radio"] {
     justify-content: center;
     height: 1110px;
     width: 550px;
-    border-radius: 20px;
-    background-color: white;
+    border: 1px solid white;
+    background-color: rgb(30, 30, 53);
 }
 
 .dash-toggle {
@@ -503,9 +643,13 @@ img {
     }
 }
 @media (max-width: 900px) {
+    #u-d {
+        display: contents;
+        font-size: 2rem;
+    }
     th {
         padding: 1px;
-        font-size:0.6rem;
+        font-size:0.8rem;
         word-break: normal;
         padding-top: 6px;
         padding-bottom: 6px;
@@ -520,7 +664,7 @@ img {
     }
     .dashboard {
         z-index: 100;
-        background-color: #5c5c5c;
+        background-color: rgb(30, 30, 53);
         transform: translateX(-170px);
         transition: 0.2s ease-out;
         overflow: hidden;
@@ -571,15 +715,12 @@ img {
     .name-update {
         width: 80%;
     }
-    .reset:hover {
-        background-color: red;
-    }
-    .reset:active {
-        background-color: rgb(131, 0, 0);
-    }
 }
 
 @media (max-width: 600px) {
+    th {
+        font-size:0.7rem;
+    }
     html .table-div {
         font-size: 4px
     }

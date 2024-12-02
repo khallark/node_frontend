@@ -27,6 +27,52 @@ function handleMediaChange(event) {
 mediaQuery.addEventListener("change", handleMediaChange);
 
 
+const optionsBox = document.getElementById("optionsBox");
+const table = document.getElementById("tablediv");
+function clearAll() {
+    optionsBox.style.display = "none";
+    const type_fetch = menuOptions[2].textContent;
+    const type_text = menuOptions[3].textContent;
+    console.log(type_fetch, type_text);
+    optionsBox.innerHTML = '';
+    optionsBox.innerHTML = `
+        <ul>
+            <li>Update</li>
+            <li>Delete</li>
+            <li style="display: none;">${type_fetch}</li>
+            <li style="display: none;">${type_text}</li>
+        </ul>
+    `
+    menuOptions = Array.from(optionsBox.querySelectorAll("li"));
+}
+let menuOptions = Array.from(optionsBox.querySelectorAll("li"));
+table.addEventListener("contextmenu", (event) => {
+    clearAll()
+    const isRow = event.target.tagName === 'TD';
+    if (!isRow) return;
+    event.preventDefault();
+    
+    menuOptions[0].addEventListener("click", function() {
+        showUpdateTemplate();
+        fillGlobalArrayWithInitVals(event.target);
+    })
+    menuOptions[1].addEventListener("click", function() {
+        delete_row(event.target, menuOptions[2].textContent, menuOptions[3].textContent);
+    })
+    const tableBounds = table.getBoundingClientRect();
+    const menuWidth = 120;
+    const menuHeight = 120;
+    let x;
+    if(menuOptions[2].textContent === 'search' || window.innerWidth < 900) x = Math.min(event.pageX, tableBounds.right - menuWidth);
+    else x = Math.min(event.pageX - 170, tableBounds.right - menuWidth - 170);
+    const y = Math.min(event.pageY, tableBounds.bottom - menuHeight);
+    optionsBox.style.left = `${x}px`;
+    optionsBox.style.top = `${y}px`;
+    optionsBox.style.display = "block";
+});
+document.addEventListener("click", clearAll);
+
+
 async function __addORsearch(type_fetch) {
     if(type_fetch === 'searchStringPref') return await __fetchSearched();
     else return await __fetchProducts(type_fetch);
@@ -244,7 +290,7 @@ async function addProducts(type_fetch, type_text) {
     for (let i = 0; i < products.length; i++) {
         const productArray = Object.values(products[i]);
         let newRow = prods_sec.insertRow();
-        if(productArray[8] === true) newRow.style.backgroundColor = 'white';
+        if(productArray[8] === true) newRow.style.backgroundColor = 'rgb(78, 78, 105)';
         let cell = newRow.insertCell(0);
         await addbts(cell, type_fetch, type_text);
         for(let i = 1; i < 8; i++) {
