@@ -4,6 +4,7 @@
     font-family: "Kanit", sans-serif;
     overflow: hidden;
     -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
 *::-webkit-input-placeholder {
     color: white;
@@ -45,6 +46,7 @@ body {
     padding: 0;
 }
 .options-box ul li {
+    font-size: 1rem;
     padding: 10px;
     cursor: pointer;
     width: 100px;
@@ -643,6 +645,9 @@ img {
     }
 }
 @media (max-width: 900px) {
+    .options-box ul li {
+        font-size: 1rem;
+    }
     #u-d {
         display: contents;
         font-size: 2rem;
