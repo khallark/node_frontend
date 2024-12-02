@@ -309,7 +309,7 @@ async function searchString(event) {
     for (let i = 0; i < products.length; i++) {
         const productArray = Object.values(products[i]);
         let newRow = search_sec.insertRow();
-        if(productArray[8] === true) newRow.style.backgroundColor = 'white';
+        if(productArray[8] === true) newRow.style.backgroundColor = 'rgb(78, 78, 105)';
         let cell = newRow.insertCell(0);
         await addbts(cell, 'search', 'search');
         for(let i = 1; i < 8; i++) {
@@ -387,7 +387,7 @@ async function addRow() {
 
 async function fillGlobalArrayWithInitVals(button) {
     const row = button.parentNode.children;
-    const sold_colour = (window.getComputedStyle(button.parentNode).backgroundColor === 'rgb(255, 255, 255)') ? 'TRUE' : 'FALSE';
+    const sold_colour = (window.getComputedStyle(button.parentNode).backgroundColor === 'rgb(78, 78, 105)') ? 'TRUE' : 'FALSE';
     InitVals = [row[1].textContent, row[2].textContent, row[3].textContent, row[4].textContent, row[5].textContent,
     row[6].textContent, row[7].textContent, convertDateFormat(row[8].textContent), sold_colour];
 
