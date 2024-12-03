@@ -30,6 +30,11 @@ body {
     background-color: rgb(30, 30, 53);
 }
 
+
+#num {
+    font-size: 3rem;
+    font-weight: 200;
+}
 .options-box {
     position: absolute;
     display: none;
@@ -622,7 +627,7 @@ input[type="radio"] {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 1110px;
+    height: 1150px;
     width: 550px;
     border: 1px solid white;
     background-color: rgb(30, 30, 53);
@@ -645,13 +650,23 @@ img {
     }
 }
 @media (max-width: 900px) {
+    .reset {
+        scale: 0.8;
+        transform: translateX(-5px) translateY(-5px);
+    }
+    .reset:active {
+        border-left: 1px solid black;
+        transform: translateX(-15px) translateY(5px) translateZ(0);
+    }
+    .reset:active .edge-1 {
+        transform: skewY(-42deg) scaleX(0) translateY(-4.4px);
+    }
+    .reset:active .edge-2 {
+        transform: skewX(-48deg) scaleY(0) translateX(5px);
+    }
     .options-box ul li {
         font-size: 1rem;
     }
-    /* #u-d {
-        display: contents;
-        font-size: 2rem;
-    } */
     th {
         padding: 1px;
         font-size:0.8rem;
@@ -702,12 +717,13 @@ img {
     #s-b {
         display: block;
         width: 10px;
-        height: 200px;
-        min-height: 200px;
+        height: 60px;
+        min-height: 60px;
     }
     .update-card {
         width: 100%;
         border-radius: 0;
+        height: 1200px;
     }
     #update-form {
         display: flex;
@@ -719,6 +735,9 @@ img {
     }
     .name-update {
         width: 80%;
+    }
+    #num {
+        font-size: 2.6rem;
     }
 }
 

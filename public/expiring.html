@@ -62,7 +62,7 @@
                 align-items: center;
                 border: none;
             ">
-                <h1 style="font-size: 3rem; font-weight: 200;" id="num">Expiring Items (0)</h1>
+                <h1 id="num">Expiring Items (0)</h1>
                 <button class="reset" id="expiring-reset" onclick="addProducts('expiring', 'Expiring')">
                     <div class="edge-1"></div>
                     <div class="edge-2"></div>
@@ -193,23 +193,6 @@
 </body>
 <script src="config.js"></script>
 <script>
-    function showUpdateTemplate() {
-        let update = document.getElementById("no-show");
-        let main = document.getElementById("main-wrapper");
-        main.classList.add("wrapper-blur");
-        update.id = "show";
-    }
-
-    function removeUpdateTemplate() {
-        let update = document.getElementById("show");
-        let main = document.getElementById("main-wrapper");
-        main.classList.remove("wrapper-blur");
-        update.id = "no-show";
-    }
-    function preventRefresh(event) {
-        event.preventDefault();
-    }
-
     document.addEventListener('DOMContentLoaded', async () => {
         await addProducts('expiring', 'Expiring');
     });

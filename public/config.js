@@ -5,6 +5,26 @@ function disCont(section) {
     window.location.href = `/${section}.html`;
 }
 
+function showUpdateTemplate() {
+    let update = document.getElementById("no-show");
+    let main = document.getElementById("main-wrapper");
+    main.classList.add("wrapper-blur");
+    update.id = "show";
+}
+
+function removeUpdateTemplate() {
+    setTimeout(() => {
+        let update = document.getElementById("show");
+        let main = document.getElementById("main-wrapper");
+        main.classList.remove("wrapper-blur");
+        update.id = "no-show";
+    }, 300);
+}
+
+function preventRefresh(event) {
+    event.preventDefault();
+}
+
 function dash_toggle(bool) {
     let dashboard = document.getElementById('dboard');
     if(bool) {
