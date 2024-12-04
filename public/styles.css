@@ -645,6 +645,7 @@ input[type="radio"] {
 
 .dash-toggle {
     display: none;
+    margin-top: 3px;
 }
 img {
     cursor: pointer;
