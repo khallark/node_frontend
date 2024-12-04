@@ -154,23 +154,4 @@
     </div>
 </body>
 <script src="config.js"></script>
-<script>
-    function showUpdateTemplate() {
-        let update = document.getElementById("no-show");
-        let main = document.getElementById("main-wrapper");
-        main.classList.add("wrapper-blur");
-        update.id = "show";
-    }
-
-    function removeUpdateTemplate() {
-        let update = document.getElementById("show");
-        let main = document.getElementById("main-wrapper");
-        main.classList.remove("wrapper-blur");
-        update.id = "no-show";
-    }
-
-    function preventRefresh(event) {
-        event.preventDefault();
-    }
-</script>
 </html>
