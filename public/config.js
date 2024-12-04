@@ -18,7 +18,7 @@ function removeUpdateTemplate() {
         let main = document.getElementById("main-wrapper");
         main.classList.remove("wrapper-blur");
         update.id = "no-show";
-    }, 300);
+    }, 200);
 }
 
 function preventRefresh(event) {
@@ -79,8 +79,8 @@ table.addEventListener("contextmenu", (event) => {
         delete_row(event.target, menuOptions[2].textContent, menuOptions[3].textContent);
     })
     const tableBounds = table.getBoundingClientRect();
-    const menuWidth = 120;
-    const menuHeight = 120;
+    const menuWidth = 170;
+    const menuHeight = 88;
     let x;
     if(menuOptions[2].textContent === 'search' || window.innerWidth < 900) x = Math.min(event.pageX, tableBounds.right - menuWidth);
     else x = Math.min(event.pageX - 170, tableBounds.right - menuWidth - 170);
@@ -273,33 +273,11 @@ function normalizeSpaces(str) {
 
 async function delete_row(button, type_fetch, type_text) {
     const row = button.parentNode.children;
-    await __deleteTuple(row[1].textContent, row[2].textContent, row[3].textContent, row[4].textContent, row[5].textContent, row[6].textContent, row[7].textContent, convertDateFormat(row[8].textContent));
+    await __deleteTuple(row[0].textContent, row[1].textContent, row[2].textContent, row[3].textContent, row[4].textContent, row[5].textContent, row[6].textContent, convertDateFormat(row[7].textContent));
 
     if(type_fetch === type_text) await searchString('');
     else await addProducts(type_fetch, type_text);
 }
-
-async function addbts(cell, type_fetch, type_text) {
-    cell.id = "u-d";
-    let update = document.createElement("button");
-    update.classList.add("u-d-button");
-    update.innerText = "U";
-    update.style.backgroundColor = "rgba(0, 128, 0, 0.575)";
-    update.addEventListener("click", function() {
-        showUpdateTemplate();
-        fillGlobalArrayWithInitVals(cell)
-    })
-    let del = document.createElement("button");
-    del.classList.add("u-d-button");
-    del.innerText = "D";
-    del.style.backgroundColor = "rgba(255, 0, 0, 0.616)";
-    del.addEventListener("click", function() {
-        delete_row(cell, type_fetch, type_text);
-    })
-    cell.appendChild(update);
-    cell.appendChild(del);
-}
-
 
 async function addProducts(type_fetch, type_text) {
     const products = await __addORsearch(type_fetch);
@@ -310,13 +288,11 @@ async function addProducts(type_fetch, type_text) {
         const productArray = Object.values(products[i]);
         let newRow = prods_sec.insertRow();
         if(productArray[8] === true) newRow.style.backgroundColor = 'rgb(78, 78, 105)';
-        let cell = newRow.insertCell(0);
-        await addbts(cell, type_fetch, type_text);
-        for(let i = 1; i < 8; i++) {
+        for(let i = 0; i < 7; i++) {
             let cell = newRow.insertCell(i);
-            cell.innerHTML = `${productArray[i - 1]}`;
+            cell.innerHTML = `${productArray[i]}`;
         }
-        cell = newRow.insertCell(8);
+        cell = newRow.insertCell(7);
         cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
     }
 }
@@ -330,13 +306,11 @@ async function searchString(event) {
         const productArray = Object.values(products[i]);
         let newRow = search_sec.insertRow();
         if(productArray[8] === true) newRow.style.backgroundColor = 'rgb(78, 78, 105)';
-        let cell = newRow.insertCell(0);
-        await addbts(cell, 'search', 'search');
-        for(let i = 1; i < 8; i++) {
+        for(let i = 0; i < 7; i++) {
             let cell = newRow.insertCell(i);
-            cell.innerHTML = `${productArray[i - 1]}`;
+            cell.innerHTML = `${productArray[i]}`;
         }
-        cell = newRow.insertCell(8);
+        cell = newRow.insertCell(7);
         cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
     }
 }
@@ -408,8 +382,8 @@ async function addRow() {
 async function fillGlobalArrayWithInitVals(button) {
     const row = button.parentNode.children;
     const sold_colour = (window.getComputedStyle(button.parentNode).backgroundColor === 'rgb(78, 78, 105)') ? 'TRUE' : 'FALSE';
-    InitVals = [row[1].textContent, row[2].textContent, row[3].textContent, row[4].textContent, row[5].textContent,
-    row[6].textContent, row[7].textContent, convertDateFormat(row[8].textContent), sold_colour];
+    InitVals = [row[0].textContent, row[1].textContent, row[2].textContent, row[3].textContent, row[4].textContent,
+    row[5].textContent, row[6].textContent, convertDateFormat(row[7].textContent), sold_colour];
 
     document.getElementById('update-cat').value = `${InitVals[0]}`;
     document.getElementById('inp-8').value = `${InitVals[1]}`;

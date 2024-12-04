@@ -30,6 +30,7 @@ body {
 }
 
 
+
 #num {
     font-size: 3rem;
     font-weight: 200;
@@ -37,7 +38,7 @@ body {
 .options-box {
     position: absolute;
     display: none;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     background-color: rgb(49, 49, 49);
     color: white;
     border: 1px solid #ccc;
@@ -50,10 +51,11 @@ body {
     padding: 0;
 }
 .options-box ul li {
-    font-size: 1rem;
+    font-size: 1.3rem;
+    font-weight: 300;
     padding: 10px;
     cursor: pointer;
-    width: 100px;
+    width: 150px;
 }
 .options-box ul li:hover {
     background-color: #464646;
@@ -78,6 +80,12 @@ table, th, td {
     border-collapse: collapse;
     word-break: break-all;
 }
+tr {
+    background-color: rgb(30, 30, 53);
+}
+tr:hover {
+    background-color: rgb(48, 48, 71);
+}
 th {
     font-size: 1.1rem;
     padding: 10px;
@@ -90,6 +98,9 @@ th {
     z-index: 1;
     background-color: rgb(62, 62, 99);
     color: white;
+}
+.tr:hover {
+    background-color: rgb(62, 62, 99);
 }
 
 td {
@@ -657,14 +668,8 @@ img {
         border-left: 1px solid black;
         transform: translateX(-15px) translateY(5px) translateZ(0);
     }
-    .reset:active .edge-1 {
-        transform: skewY(-42deg) scaleX(0) translateY(-4.4px);
-    }
-    .reset:active .edge-2 {
-        transform: skewX(-48deg) scaleY(0) translateX(5px);
-    }
     .options-box ul li {
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
     th {
         padding: 1px;
