@@ -20,6 +20,9 @@
     border: 1px solid white;
     border-left: none;
 }
+img {
+    -webkit-user-drag: none;
+}
 html {
     font-size: 12px;
 }
