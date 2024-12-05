@@ -280,7 +280,13 @@ async function delete_row(button, type_fetch, type_text) {
 }
 
 async function addProducts(type_fetch, type_text) {
+    document.getElementById('reset-bttn').style.display = 'none';
+    let load = document.getElementById('reset-not-loading');
+    if(load) load.id = 'reset-loading';
     const products = await __addORsearch(type_fetch);
+    document.getElementById('reset-bttn').style.display = 'block';
+    load = document.getElementById('reset-loading');
+    if(load) load.id = 'reset-not-loading';
     const prods_sec = document.getElementById('content-table');
     deleteAllChildren(prods_sec);
     document.getElementById('num').textContent = `${type_text} Items (${products.length})`;
@@ -316,15 +322,24 @@ async function searchString(event) {
 }
 
 
+function loading(submit_text) {
+    document.getElementById(submit_text).style.display = 'none';
+    document.getElementById('not-loading').id = 'loading';
+}
+function notLoading(submit_text) {
+    document.getElementById(submit_text).style.display = 'block';
+    document.getElementById('loading').id = 'not-loading';
+}
 function isValidDateFormat(dateString) {
     const regex = /^\d{4}-\d{2}-\d{2}$/;
     return regex.test(dateString);
 }
 
-
 async function addRow() {
+    loading('submit-text');
     const Pdate = document.getElementById('purchase-date').value;
     if(Pdate != '' && !isValidDateFormat(Pdate)) {
+        notLoading('submit-text');
         console.error('invalid purchase-date error');
         return;
     }
@@ -341,14 +356,17 @@ async function addRow() {
     ];
     
     if(vals[0] === 'none') {
+        notLoading('submit-text');
         console.error('None is not a valid category.');
         return;
     }
     if(vals[1] === '') {
+        notLoading('submit-text');
         console.error('Product name cannot be empty.');
         return;
     }
     if(!isValidDateFormat(vals[7])) {
+        notLoading('submit-text');
         console.error('invalid date format error');
         return;
     }
@@ -356,15 +374,18 @@ async function addRow() {
     const product = await __fetch_hard_searched_products(vals[1]);
     
     if(product.length > 0) {
+        notLoading('submit-text');
         console.error('product name should be unique');
         return;
     }
     try {
         await __addTuple(vals);
     } catch (error) {
+        notLoading('submit-text');
         console.error("Error in adding row:", error);
         return;
     }
+    notLoading('submit-text');
     document.getElementById('create-cat').value = 'none';
     document.getElementById('inp-1').value =
     document.getElementById('inp-2').value =
@@ -413,8 +434,10 @@ async function emptyUpdateInputs() {
 
 
 async function updateRow(type_fetch, type_text) {
+    loading('submit-text');
     const Pdate = document.getElementById('purchase-date').value;
     if(Pdate != '' && !isValidDateFormat(Pdate)) {
+        notLoading('submit-text');
         console.error('invalid purchase-date error');
         return;
     }
@@ -430,14 +453,17 @@ async function updateRow(type_fetch, type_text) {
         document.getElementById('update-sold').value
     ];
     if(vals[0] === 'none') {
+        notLoading('submit-text');
         console.error('None is not a valid category.');
         return;
     }
     if(vals[1] === '') {
+        notLoading('submit-text');
         console.error('Product name cannot be empty.');
         return;
     }
     if(!isValidDateFormat(vals[7])) {
+        notLoading('submit-text');
         console.error('invalid date format error');
         return;
     }
@@ -447,9 +473,11 @@ async function updateRow(type_fetch, type_text) {
     try {
         await __addTuple(vals);
     } catch (error) {
+        notLoading('submit-text');
         console.error("Error in adding row:", error);
         return;
     }
+    notLoading('submit-text');
     let update = document.getElementById("show");
     let main = document.getElementById("main-wrapper");
     main.classList.remove("wrapper-blur");

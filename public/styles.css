@@ -29,8 +29,22 @@ body {
     background-color: rgb(30, 30, 53);
 }
 
-
-
+.reset-load {
+    height: 30px;
+    width: 30px;
+    margin-top: 4.5px;
+}
+#reset-not-loading {
+    display: none;
+}
+.load {
+    height: 35px;
+    width: 35px;
+    margin-top: 5.5px;
+}
+#not-loading {
+    display: none;
+}
 #num {
     font-size: 3rem;
     font-weight: 200;

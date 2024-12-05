@@ -67,6 +67,7 @@
                     <div class="edge-1"></div>
                     <div class="edge-2"></div>
                     <img id="reset-bttn" src="reset.png" alt="reset">
+                    <img class="reset-load" id="reset-not-loading" src="loading.gif" alt="reset">
                 </button>
             </div>
             <div id="tablediv" class="table-div">
@@ -177,7 +178,8 @@
                     <button id="update-submit" class="submit" onclick="updateRow('expired', 'Expired')">
                         <div class="c-edge-1"></div>
                         <div class="c-edge-2"></div>
-                        Update
+                        <div id="submit-text">Update</div>
+                        <img src="loading.gif" alt="loading" id="not-loading" class="load">
                     </button>
                     <button id="update-submit" class="submit" onclick="removeUpdateTemplate()">
                         <div class="c-edge-1"></div>
