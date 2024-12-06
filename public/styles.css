@@ -480,44 +480,44 @@ input[type="radio"] {
     background-color: white;
     outline: none;
     transform: translateX(10px) translateY(-5px) translateZ(10px);
-    transition: 0.1s linear;
+    transition: 2s linear;
     cursor: pointer;
     user-select: none;
 }
 .c-edge-1 {
     position: absolute;
-    height: 103.5%;
+    height: 104%;
     width: 10px;
     background-color: white;
     top: 3.5px;
-    left: -10px;
+    left: -11px;
     transform-origin: right;
     transform: skewY(-42deg) scaleX(1) translateY(-4.4px);
     border: 1px solid black;
-    border-bottom: 2px solid black;
     border-left: none;
-    transition: 0.1s linear;
+    border-right: none;
+    transition: 2s linear;
 }
 .c-edge-2 {
     position: absolute;
     height: 9px;
-    width: 100%;
+    width: 101.5%;
     background-color: white;
-    bottom: -9.2px;
-    left: -3.6px;
+    bottom: -10.1px;
+    left: -6px;
     transform-origin: top;
     transform: skewX(-48deg) scaleY(1) translateX(5px);
     border: 1px solid black;
-    border-left: none;
+    border-top: none;
     border-bottom: none;
-    transition: 0.1s linear;
+    transition: 2s linear;
 }
 .submit:active {
     border-left: 1px solid black;
     transform: translateX(0) translateY(3px) translateZ(0);
 }
 .submit:active .c-edge-1 {
-    transform: skewY(-42deg) scaleX(0) translateY(-4px);
+    transform: skewY(-42deg) scaleX(0) translateY(-3px);
 }
 .submit:active .c-edge-2 {
     transform: skewX(-48deg) scaleY(0) translateX(5px);
