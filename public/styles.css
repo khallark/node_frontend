@@ -400,7 +400,9 @@ input[type="radio"] {
 .search-slot {
     display: flex;
     position: relative;
-    min-height: 150px;
+    height: 100px;
+    min-height: 100px;
+    border: none;
     width: 95%;
 }
 .search-input {
