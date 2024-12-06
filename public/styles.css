@@ -49,7 +49,7 @@ body {
     display: none;
 }
 #num {
-    background: linear-gradient(455deg, rgb(168, 168, 168) 0%, rgb(82, 82, 82) 100%, rgb(22, 22, 22) 100%);
+    background: linear-gradient(455deg, rgb(141, 141, 141) 0%, rgb(82, 82, 82) 100%, rgb(22, 22, 22) 100%);
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 3px;
