@@ -49,17 +49,17 @@ body {
     display: none;
 }
 #num {
-    background: linear-gradient(135deg, rgb(158, 158, 158) 10%, rgb(87, 87, 87) 100%, rgb(71, 71, 71) 100%);
+    background: linear-gradient(455deg, rgb(168, 168, 168) 0%, rgb(82, 82, 82) 100%, rgb(22, 22, 22) 100%);
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 3rem;
     font-weight: 200;
+    color: white;
 }
 .options-box {
     position: absolute;
     display: none;
-    /* border-radius: 5px; */
     background-color: rgb(49, 49, 49);
     color: white;
     border: 1px solid #ccc;
@@ -80,10 +80,6 @@ body {
 }
 .options-box ul li:hover {
     background-color: #464646;
-}
-
-#num {
-    color: white;
 }
 .table-div {
     overflow-y: auto;
