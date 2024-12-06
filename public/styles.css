@@ -49,6 +49,10 @@ body {
     display: none;
 }
 #num {
+    background: linear-gradient(135deg, rgb(158, 158, 158) 10%, rgb(87, 87, 87) 100%, rgb(71, 71, 71) 100%);
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
     font-size: 3rem;
     font-weight: 200;
 }
@@ -264,20 +268,24 @@ input[type="radio"] {
     position: absolute;
     left: -10.9px;
     bottom: -6.5px;
-    background: none;
+    background-color: white;
     height: 103.5%;
     width: 6%;
-    transform: skewY(-48deg);
+    transform-origin: right;
+    transform: translateY(-5px) skewY(-48deg) scaleX(0);
+    transition: 0.05s linear;
 }
 
 .lower {
     position: absolute;
     left: -7px;
     bottom: -11.5px;
-    background: none;
+    background-color: white;
     height: 22%;
     width: 102%;
-    transform: skew(-42deg);
+    transform-origin: top;
+    transform: translateX(5px) skewX(-42deg) scaleY(0);
+    transition: 0.05s linear;
 }
 .ops-button {
     overflow: visible;
@@ -309,11 +317,11 @@ input[type="radio"] {
     border-left: 1px solid white;
     transform: translateX(10px) translateY(-5px) translateZ(10px);
 }
-.ops-button:hover .lower {
-    background-color: white;
-}
 .ops-button:hover .upper {
-    background-color: white;
+    transform: translateY(-5px) skewY(-48deg) scaleX(1);
+}
+.ops-button:hover .lower {
+    transform:  translateX(5px) skewX(-42deg) scaleY(1);
 }
 .ops-button-active {
     overflow: visible;
@@ -346,6 +354,7 @@ input[type="radio"] {
     bottom: -5.5px;
     background-color: white;
     border-top: 1px solid black;
+    transform: translateY(-5px) skewY(-48deg) scaleX(1);
 }
 .ops-button-active .lower{
     left: -6.5px;
@@ -354,6 +363,7 @@ input[type="radio"] {
     background-color: white;
     border: 1px solid black;
     border-top: none;
+    transform: translateX(5px) skewX(-48deg) scaleY(1);
 }
 
 @keyframes pop-up {
@@ -396,7 +406,7 @@ input[type="radio"] {
     display: flex;
     position: relative;
     min-height: 150px;
-    width: 90%;
+    width: 95%;
 }
 .search-input {
     position: absolute;
@@ -475,19 +485,19 @@ input[type="radio"] {
     background-color: white;
     outline: none;
     transform: translateX(10px) translateY(-5px) translateZ(10px);
-    transition: 0.05s;
+    transition: 0.05s linear;
     cursor: pointer;
     user-select: none;
 }
 .c-edge-1 {
     position: absolute;
-    height: 101.5%;
+    height: 103.5%;
     width: 10px;
     background-color: white;
     top: 3.5px;
     left: -10px;
     transform-origin: right;
-    transform: skewY(-42deg) scale(1) translateY(-4.4px);
+    transform: skewY(-42deg) scaleX(1) translateY(-4.4px);
     border: 1px solid black;
     border-bottom: 2px solid black;
     border-left: none;
@@ -496,10 +506,10 @@ input[type="radio"] {
 .c-edge-2 {
     position: absolute;
     height: 9px;
-    width: 101%;
+    width: 100%;
     background-color: white;
     bottom: -9.2px;
-    left: -4.6px;
+    left: -3.6px;
     transform-origin: top;
     transform: skewX(-48deg) scaleY(1) translateX(5px);
     border: 1px solid black;
@@ -509,10 +519,10 @@ input[type="radio"] {
 }
 .submit:active {
     border-left: 1px solid black;
-    transform: translateX(0) translateY(0) translateZ(0);
+    transform: translateX(0) translateY(3px) translateZ(0);
 }
 .submit:active .c-edge-1 {
-    transform: skewY(-42deg) scaleX(0) translateY(-4.4px);
+    transform: skewY(-42deg) scaleX(0) translateY(-4px);
 }
 .submit:active .c-edge-2 {
     transform: skewX(-48deg) scaleY(0) translateX(5px);
@@ -550,7 +560,7 @@ input[type="radio"] {
     height: fit-content;
     overflow: visible;
     min-height: 150px;
-    width: 90%;
+    width: 95%;
     z-index: 1;
 }
 .expire-slot {
@@ -559,12 +569,13 @@ input[type="radio"] {
     overflow: visible;
     height: fit-content;
     min-height: 150px;
-    width: 90%;
+    width: 95%;
 }
 .reset {
     height: 50px;
     width: 50px;
     min-width: 50px;
+    margin-right: 10px;
     border: none;
     outline: none;
     background-color: rgb(255, 255, 255);
@@ -621,7 +632,7 @@ input[type="radio"] {
 }
 .reset:active {
     border-left: 1px solid black;
-    transform: translateX(0) translateY(0) translateZ(0);
+    transform: translateX(-1px) translateY(4px) translateZ(0);
 }
 .reset:active .edge-1 {
     transform: skewY(-42deg) scaleX(0) translateY(-4.4px);
@@ -652,6 +663,7 @@ input[type="radio"] {
 .update-card {
     display: flex;
     flex-direction: column;
+    overflow: visible;
     align-items: center;
     justify-content: center;
     height: 1150px;
@@ -671,6 +683,9 @@ img {
 #s-b {
     display: none;
 }
+#update-form {
+    overflow: visible;
+}
 
 @media (min-width: 900px) {
     #dboard {
@@ -680,11 +695,11 @@ img {
 @media (max-width: 900px) {
     .reset {
         scale: 0.8;
-        transform: translateX(-5px) translateY(-5px);
+        transform: translateX(20px) translateY(-5px);
     }
     .reset:active {
         border-left: 1px solid black;
-        transform: translateX(-15px) translateY(5px) translateZ(0);
+        transform: translateX(9px) translateY(4px) translateZ(0);
     }
     .options-box ul li {
         font-size: 1.3rem;
@@ -708,7 +723,7 @@ img {
         z-index: 100;
         background-color: rgb(30, 30, 53);
         transform: translateX(-170px);
-        transition: 0.2s ease-out;
+        transition: 0.0.05s ease-out;
         overflow: hidden;
     }
     .ops-text {
@@ -753,6 +768,7 @@ img {
         margin-top: 30px;
         row-gap: 20px;
         align-items: center;
+        overflow: hidden;
         width: 100%;
     }
     .name-update {
