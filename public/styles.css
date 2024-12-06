@@ -480,7 +480,7 @@ input[type="radio"] {
     background-color: white;
     outline: none;
     transform: translateX(10px) translateY(-5px) translateZ(10px);
-    transition: 0.01s linear;
+    transition: 0.1s linear;
     cursor: pointer;
     user-select: none;
 }
@@ -496,7 +496,7 @@ input[type="radio"] {
     border: 1px solid black;
     border-left: none;
     border-right: none;
-    transition: 0.01s linear;
+    transition: 0.1s linear;
 }
 .c-edge-2 {
     position: absolute;
@@ -510,7 +510,7 @@ input[type="radio"] {
     border: 1px solid black;
     border-top: none;
     border-bottom: none;
-    transition: 0.01s linear;
+    transition: 0.1s linear;
 }
 .submit:active {
     border-left: 1px solid black;
