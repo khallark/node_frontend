@@ -324,11 +324,13 @@ async function searchString(event) {
 
 function loading(submit_text) {
     document.getElementById(submit_text).style.display = 'none';
-    document.getElementById('not-loading').id = 'loading';
+    let load = document.getElementById('not-loading');
+    if(load) load.id = 'loading';
 }
 function notLoading(submit_text) {
     document.getElementById(submit_text).style.display = 'block';
-    document.getElementById('loading').id = 'not-loading';
+    let load = document.getElementById('loading');
+    if(load) load.id = 'not-loading';
 }
 function isValidDateFormat(dateString) {
     const regex = /^\d{4}-\d{2}-\d{2}$/;
