@@ -1,3 +1,4 @@
+document.getElementById('search-input').value = '';
 let InitVals = [];
 
 function disCont(section) {
