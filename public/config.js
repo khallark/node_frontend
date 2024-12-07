@@ -1,6 +1,9 @@
-document.getElementById('search-input').value = '';
 let InitVals = [];
-
+function empty() {
+    let input = document.getElementById('search-input');
+    if(input) input.value = '';
+}
+empty()
 function disCont(section) {
     const currentPath = window.location.pathname;
     window.location.href = `/${section}.html`;
