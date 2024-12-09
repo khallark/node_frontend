@@ -277,8 +277,7 @@ function normalizeSpaces(str) {
 
 async function delete_row(button, type_fetch, type_text) {
     const row = button.parentNode.children;
-    await __deleteTuple(row[0].textContent, row[1].textContent, row[2].textContent, row[3].textContent, row[4].textContent, row[5].textContent, row[6].textContent, convertDateFormat(row[7].textContent));
-
+    await __deleteTuple(row[0].textContent, row[1].textContent, row[2].textContent, row[3].textContent, row[4].innerHTML.replace(/<br>/g, "!"), row[5].textContent, row[6].textContent, convertDateFormat(row[7].textContent));
     if(type_fetch === type_text) await searchString('');
     else await addProducts(type_fetch, type_text);
 }
@@ -300,7 +299,8 @@ async function addProducts(type_fetch, type_text) {
         if(productArray[8] === true) newRow.style.backgroundColor = 'rgb(78, 78, 105)';
         for(let i = 0; i < 7; i++) {
             let cell = newRow.insertCell(i);
-            cell.innerHTML = `${productArray[i]}`;
+            if(i == 4) cell.innerHTML = `${productArray[i].replace(/!/g, "<br>")}`;
+            else cell.innerHTML = `${productArray[i]}`;
         }
         cell = newRow.insertCell(7);
         cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
@@ -318,7 +318,8 @@ async function searchString(event) {
         if(productArray[8] === true) newRow.style.backgroundColor = 'rgb(78, 78, 105)';
         for(let i = 0; i < 7; i++) {
             let cell = newRow.insertCell(i);
-            cell.innerHTML = `${productArray[i]}`;
+            if(i == 4) cell.innerHTML = `${productArray[i].replace(/!/g, "<br>")}`;
+            else cell.innerHTML = `${productArray[i]}`;
         }
         cell = newRow.insertCell(7);
         cell.innerHTML = `${TexualDateFormat(productArray[7])}`;
@@ -409,8 +410,7 @@ async function addRow() {
 async function fillGlobalArrayWithInitVals(button) {
     const row = button.parentNode.children;
     const sold_colour = (window.getComputedStyle(button.parentNode).backgroundColor === 'rgb(78, 78, 105)') ? 'TRUE' : 'FALSE';
-    InitVals = [row[0].textContent, row[1].textContent, row[2].textContent, row[3].textContent, row[4].textContent,
-    row[5].textContent, row[6].textContent, convertDateFormat(row[7].textContent), sold_colour];
+    InitVals = [row[0].textContent, row[1].textContent, row[2].textContent, row[3].textContent, row[4].innerHTML.replace(/<br>/g, "!"), row[5].textContent, row[6].textContent, convertDateFormat(row[7].textContent), sold_colour];
 
     document.getElementById('update-cat').value = `${InitVals[0]}`;
     document.getElementById('inp-8').value = `${InitVals[1]}`;
