@@ -115,6 +115,7 @@ th {
     z-index: 1;
     background-color: rgb(62, 62, 99);
     color: white;
+    vertical-align: top;
 }
 .tr:hover {
     background-color: rgb(62, 62, 99);
