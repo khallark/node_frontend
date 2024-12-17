@@ -417,12 +417,13 @@ input[type="radio"] {
     padding: 20px;
     background: none;
     color: white;
+    transition: 0.1s linear;
 }
 .search-input:hover {
-    background-color: rgb(62, 62, 99);
+    background-color: rgb(66, 66, 105);
 }
 .search-input:focus {
-    background-color: rgb(62, 62, 99);
+    background-color: rgb(84, 84, 117);
 }
 
 .create-ct {
@@ -459,9 +460,13 @@ input[type="radio"] {
     font-size: 1.2rem;
     padding: 15px;
     background: none;
+    transition: 0.1s linear;
 }
-.name-input:hover, .name-input:focus {
-    background-color: rgb(78, 78, 105);
+.name-input:hover {
+    background-color: rgb(66, 66, 105);
+}
+.name-input:focus {
+    background-color: rgb(84, 84, 117);
 }
 #create-submit {
     font-size: 1.5rem;
