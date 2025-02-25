@@ -103,7 +103,7 @@ async function __addORsearch(type_fetch) {
 
 async function __fetchProducts(type_fetch) {
     try {
-        const response = await fetch(`https://prods-exp-server.onrender.com/${type_fetch}`);
+        const response = await fetch(`https://prods-exp-server-production.up.railway.app/${type_fetch}`);
         
         if (!response.ok) {
             throw new Error(`Failed to fetch products: ${response.statusText}`);
@@ -142,7 +142,7 @@ async function __fetchSearched() {
     try {
         const string = encodeURIComponent(formattedSearch(document.getElementById('search-input').value));
         const response = await fetch(
-            `https://prods-exp-server.onrender.com/searchStringPref/${string}`,
+            `https://prods-exp-server-production.up.railway.app/searchStringPref/${string}`,
             { signal: currentController.signal }
         );
 
@@ -161,7 +161,7 @@ async function __fetchSearched() {
 }
 
 async function __deleteTuple(category, product_n, batch_no, qty, price, manufacturer_n, bill_no, exp_date) {
-    const baseUrl = 'https://prods-exp-server.onrender.com/delete';
+    const baseUrl = 'https://prods-exp-server-production.up.railway.app/delete';
     const params = new URLSearchParams({
         category: category,
         product_name: product_n,
@@ -192,7 +192,7 @@ async function __deleteTuple(category, product_n, batch_no, qty, price, manufact
 async function __addTuple(productDetails) {
     const [cat, product_n, batch_no, qty, price, manufacturer_n, bill_no, exp_date, is_sold] = productDetails;
 
-    const baseUrl = 'https://prods-exp-server.onrender.com/addproduct';
+    const baseUrl = 'https://prods-exp-server-production.up.railway.app/addproduct';
     const bodyData = {
         category: cat,
         product_name: product_n,
@@ -226,7 +226,7 @@ async function __addTuple(productDetails) {
 async function __fetch_hard_searched_products(string) {
     try {
         string = formattedSearch(string)
-        const response = await fetch(`https://prods-exp-server.onrender.com/searchStringHard/${encodeURIComponent(string)}`);
+        const response = await fetch(`https://prods-exp-server-production.up.railway.app/searchStringHard/${encodeURIComponent(string)}`);
         
         if (!response.ok) {
             throw new Error(`Failed to fetch expiring products: ${response.statusText}`);
