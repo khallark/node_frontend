@@ -5,6 +5,9 @@
     overflow: hidden;
     -webkit-tap-highlight-color: transparent;
 }
+html {
+    filter: invert(1);
+}
 *::-webkit-input-placeholder {
     color: white;
     font-weight: 200;
